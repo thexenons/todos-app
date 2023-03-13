@@ -3,6 +3,7 @@ import {
   BadRequestException,
   NotFoundException,
 } from '@nestjs/common/exceptions';
+import { BcryptService } from 'src/bcrypt/bcrypt.service';
 import { DataSource } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -10,7 +11,10 @@ import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
-  constructor(private dataSource: DataSource) {}
+  constructor(
+    private dataSource: DataSource,
+    private bcryptService: BcryptService,
+  ) {}
 
   async create(createUserDto: CreateUserDto) {
     const errors = {};
@@ -30,7 +34,9 @@ export class UsersService {
     let newUser = new User();
     newUser.email = createUserDto.email;
     newUser.username = createUserDto.username;
-    newUser.password = createUserDto.password;
+    newUser.password = await this.bcryptService.generatePasswordHash(
+      createUserDto.password,
+    );
 
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
@@ -59,6 +65,21 @@ export class UsersService {
     return newUser;
   }
 
+  async findOneByUsername(username: string) {
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    const user = await queryRunner.manager.findOne(User, {
+      where: { username },
+    });
+    await queryRunner.release();
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    return user;
+  }
+
   async findOne(id: number) {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
@@ -68,6 +89,8 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
+
+    delete user.password;
 
     return user;
   }
