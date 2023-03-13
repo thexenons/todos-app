@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { BcryptModule } from './bcrypt/bcrypt.module';
 import { UsersModule } from './users/users.module';
+import { TodosListsModule } from './todos-lists/todos-lists.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { UsersModule } from './users/users.module';
     UsersModule,
     AuthModule,
     BcryptModule,
+    TodosListsModule,
   ],
   providers: [
     {

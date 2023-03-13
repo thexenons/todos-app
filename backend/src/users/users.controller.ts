@@ -7,6 +7,7 @@ import {
   Post,
   Request,
 } from '@nestjs/common';
+import { Public } from 'src/decorators/public.decorator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
@@ -15,6 +16,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @Public()
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
@@ -22,16 +24,16 @@ export class UsersController {
 
   @Get('me')
   getProfile(@Request() req) {
-    return this.usersService.findOne(req.user.id);
+    return this.usersService.findOne(req.user.userId);
   }
 
-  @Patch('me/update')
+  @Patch('me')
   updateProfile(@Request() req, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(req.user.id, updateUserDto);
+    return this.usersService.update(req.user.userId, updateUserDto);
   }
 
-  @Delete('me/delete')
+  @Delete('me')
   deleteProfile(@Request() req) {
-    return this.usersService.remove(req.user.id);
+    return this.usersService.remove(req.user.userId);
   }
 }

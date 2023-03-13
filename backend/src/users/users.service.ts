@@ -62,6 +62,7 @@ export class UsersService {
       await queryRunner.release();
     }
 
+    delete newUser.password;
     return newUser;
   }
 
@@ -96,10 +97,23 @@ export class UsersService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
+    const errors = {};
+    if (!updateUserDto.id) {
+      errors['id'] = 'Id is required';
+    }
+    if (updateUserDto.id !== id) {
+      errors['id'] = 'Id does not match';
+    }
+    if (Object.keys(errors).length > 0) {
+      throw new BadRequestException(JSON.stringify(errors));
+    }
+
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.manager.update(User, { id }, updateUserDto);
     await queryRunner.release();
+
+    return this.findOne(id);
   }
 
   async remove(id: number) {
