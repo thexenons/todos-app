@@ -52,13 +52,16 @@ export class TodosListsService {
   }
 
   async findAll(userId: number) {
-    const user = await this.usersService.findOne(userId);
     const queryRunner = await this.dataSource.createQueryRunner();
     await queryRunner.connect();
     const [todosLists, total] = await queryRunner.manager.findAndCount(
       TodosList,
       {
-        where: { user: user },
+        where: {
+          user: {
+            id: userId,
+          },
+        },
       },
     );
     await queryRunner.release();
@@ -70,12 +73,12 @@ export class TodosListsService {
   }
 
   async findOne(id: number, userId: number) {
-    const user = await this.usersService.findOne(userId);
-
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     const todoList = await queryRunner.manager.findOneBy(TodosList, {
-      user,
+      user: {
+        id: userId,
+      },
       id,
     });
     await queryRunner.release();
@@ -106,14 +109,14 @@ export class TodosListsService {
       throw new BadRequestException(JSON.stringify(errors));
     }
 
-    const user = await this.usersService.findOne(userId);
-
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
       const todoList = await queryRunner.manager.findOneBy(TodosList, {
-        user,
+        user: {
+          id: userId,
+        },
         id,
       });
       if (!todoList) {
@@ -135,11 +138,14 @@ export class TodosListsService {
   }
 
   async remove(id: number, userId: number) {
-    const user = await this.usersService.findOne(userId);
-
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
-    await queryRunner.manager.delete(TodosList, { id, user });
+    await queryRunner.manager.delete(TodosList, {
+      id,
+      user: {
+        id: userId,
+      },
+    });
     await queryRunner.release();
   }
 }

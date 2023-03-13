@@ -1,0 +1,9 @@
+POST http://localhost:3000/todos
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJzdWIiOjEsImlhdCI6MTY3ODczMTIyNywiZXhwIjoxNjc4NzMxODI3fQ.U_nzzdpCVzaaqxbtpbZtOFO-xwLcDoLYmY_CVqHuXww
+
+{
+  "name": "Test todo",
+  "completed": false,
+  "todosListId": 3
+}
