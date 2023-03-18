@@ -5,10 +5,25 @@ const pages: Pages = {
 	[PageKey.home]: {
 		path: "/",
 		title: "Home",
-		loader: async () => {
-			return await (await import("./Home")).getInitialData();
-		},
 		component: lazy(() => import("./Home")),
+	},
+	[PageKey.test]: {
+		path: "/test",
+		title: "Test",
+		loader: async () => {
+			return await (await import("./Test")).getInitialData();
+		},
+		component: lazy(() => import("./Test")),
+		children: {
+			[PageKey.test2]: {
+				path: "/test2",
+				title: "Test",
+				loader: async () => {
+					return await (await import("./Test")).getInitialData();
+				},
+				component: lazy(() => import("./Test")),
+			},
+		},
 	},
 };
 

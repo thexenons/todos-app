@@ -8,15 +8,12 @@ export function getPagePath(
 ): string {
 	for (const pageKey in initialPages) {
 		const page = initialPages[pageKey as PageKey] as Page;
-		let finalPath = (initialPath += page.path);
+		let finalPath = `${initialPath}${page.path}`;
 
-		if (pageKey === targetPageKey) {
-			return finalPath;
-		}
+		if (pageKey === targetPageKey) return finalPath;
 
 		if (page.children) {
-			if (finalPath === "/") finalPath = "";
-			finalPath += getPagePath(targetPageKey, page.children, finalPath);
+			finalPath = getPagePath(targetPageKey, page.children, finalPath);
 
 			if (finalPath) return finalPath;
 		}
@@ -27,7 +24,7 @@ export function getPagePath(
 
 export function parsePageToRoute(key: PageKey, page: Page) {
 	const route: RouteObject = {
-		path: page.path,
+		path: getPagePath(key),
 		element: <page.component key={key} />,
 		loader: page.loader,
 	};
