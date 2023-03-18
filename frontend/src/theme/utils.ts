@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { BREAKPOINT } from "./common/breakpoints";
+import type { BREAKPOINT } from "./common/breakpoints";
 
 export function pxToRem(pxString: string | number) {
 	let px = "";

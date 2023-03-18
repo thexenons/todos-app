@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import pages, { PageKey } from "../pages";
+import type { PageKey } from "../pages";
+import pages from "../pages";
 import { parsePageToRoute } from "./utils";
 
 const router = createBrowserRouter(

@@ -1,9 +1,10 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { useLoaderData } from "react-router-dom";
-import pages, { PageKey } from "..";
+import type { PageKey } from "..";
+import pages from "..";
 import Link from "../../components/atoms/Link";
 import Container from "../../components/layout/Container";
-import { TestParams } from "./types";
+import type { TestParams } from "./types";
 
 const Test: FC = () => {
 	const { title = "" } = useLoaderData() as TestParams;

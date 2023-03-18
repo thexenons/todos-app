@@ -1,5 +1,6 @@
 import { lazy } from "react";
-import { PageKey, Pages } from "./types";
+import type { Pages } from "./types";
+import { PageKey } from "./types";
 
 const pages: Pages = {
 	[PageKey.home]: {

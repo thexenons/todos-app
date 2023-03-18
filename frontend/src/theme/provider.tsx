@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai/react";
-import { FC, PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
 import { ThemeProvider } from "styled-components";
 import { activeThemeAtom } from "./state";
 

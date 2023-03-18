@@ -1,5 +1,5 @@
-import { PropsWithChildren } from "react";
-import { PageKey } from "../../../pages";
+import type { PropsWithChildren } from "react";
+import type { PageKey } from "../../../pages";
 
 export interface LinkProps extends PropsWithChildren {
 	pageKey: PageKey;

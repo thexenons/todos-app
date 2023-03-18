@@ -1,4 +1,5 @@
-import { FC, PropsWithChildren, Suspense } from "react";
+import type { FC, PropsWithChildren } from "react";
+import { Suspense } from "react";
 import Footer from "../Footer";
 import Header from "../Header";
 

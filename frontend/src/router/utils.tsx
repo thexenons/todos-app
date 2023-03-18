@@ -1,5 +1,6 @@
 import { RouteObject } from "react-router-dom";
-import pages, { Page, PageKey, Pages } from "../pages";
+import type { Page, PageKey, Pages } from "../pages";
+import pages from "../pages";
 
 export function getPagePath(
 	targetPageKey: PageKey,

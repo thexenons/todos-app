@@ -1,4 +1,5 @@
-import breakpoints, { BREAKPOINT } from "./breakpoints";
+import type { BREAKPOINT } from "./breakpoints";
+import breakpoints from "./breakpoints";
 
 enum MEDIA_FUNCTION {
 	up = "up",
