@@ -1,7 +1,7 @@
 import commonLayoutThemeProps from "./layout";
 
 const components = {
-	layout: commonLayoutThemeProps,
+  layout: commonLayoutThemeProps,
 };
 
 export default components;

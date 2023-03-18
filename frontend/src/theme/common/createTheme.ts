@@ -10,19 +10,19 @@ import typography from "./typography";
 import zIndex from "./zIndex";
 
 const baseTheme = {
-	components,
-	breakpoints,
-	colors,
-	media,
-	shadows,
-	spacing,
-	typography,
-	zIndex,
-	mixins,
+  components,
+  breakpoints,
+  colors,
+  media,
+  shadows,
+  spacing,
+  typography,
+  zIndex,
+  mixins,
 };
 export type BaseTheme = typeof baseTheme;
 
 function createTheme(overrides: Partial<BaseTheme> = {}) {
-	return deepmerge(baseTheme, overrides);
+  return deepmerge(baseTheme, overrides);
 }
 export default createTheme;

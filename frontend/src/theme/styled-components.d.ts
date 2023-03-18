@@ -4,5 +4,5 @@ import type { BaseTheme } from "./common/createTheme";
 
 // and extend them!
 declare module "styled-components" {
-	export interface DefaultTheme extends BaseTheme {}
+  export type DefaultTheme = BaseTheme;
 }

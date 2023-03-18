@@ -4,9 +4,9 @@ import pages from "../pages";
 import { parsePageToRoute } from "./utils";
 
 const router = createBrowserRouter(
-	Object.entries(pages).map(([key, page]) =>
-		parsePageToRoute(key as PageKey, page)
-	)
+  Object.entries(pages).map(([key, page]) =>
+    parsePageToRoute(key as PageKey, page)
+  )
 );
 
 export default router;
