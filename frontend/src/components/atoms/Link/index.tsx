@@ -7,4 +7,5 @@ const Link: FC<LinkProps> = ({ pageKey, children }) => (
 	<RouterLink to={getPagePath(pageKey)}>{children}</RouterLink>
 );
 
+export * from "./types";
 export default Link;

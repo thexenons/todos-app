@@ -29,6 +29,7 @@ export function parsePageToRoute(key: PageKey, page: Page) {
 	const route: RouteObject = {
 		path: page.path,
 		element: <page.component key={key} />,
+		loader: page.loader,
 	};
 
 	if (page.children) {
