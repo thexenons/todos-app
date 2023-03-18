@@ -1,14 +1,13 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
 import { PageKey } from "..";
+import Link from "../../components/atoms/Link";
 import Container from "../../components/layout/Container";
-import { getPagePath } from "../../router/utils";
 
 const Home: FC = () => {
 	return (
 		<Container>
 			<h1>Home</h1>
-			<Link to={getPagePath(PageKey.test)}>Test link</Link>
+			<Link pageKey={PageKey.home}>Home link</Link>
 		</Container>
 	);
 };

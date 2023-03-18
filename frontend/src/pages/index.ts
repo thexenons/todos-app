@@ -1,31 +1,22 @@
 import { FC, lazy } from "react";
 
 const Home = lazy(() => import("./Home"));
-const Test = lazy(() => import("./Test"));
 
-interface Page {
+export enum PageKey {
+	home = "home",
+}
+export interface Page {
 	path: string;
 	title: string;
 	component: React.LazyExoticComponent<FC<any>>;
-	children?: Page[];
+	children?: Partial<Record<PageKey, Page>>;
 }
-export enum PageKey {
-	home = "home",
-	test = "test",
-}
-type Pages = {
-	[key in PageKey]: Page;
-};
+export type Pages = Partial<Record<PageKey, Page>>;
 const pages: Pages = {
 	[PageKey.home]: {
 		path: "/",
 		title: "Home",
 		component: Home,
-	},
-	[PageKey.test]: {
-		path: "/test",
-		title: "Test",
-		component: Test,
 	},
 };
 
