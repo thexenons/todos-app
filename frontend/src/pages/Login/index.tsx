@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { FC, useCallback, useEffect, useState } from "react";
 
-import { postAuthLogin } from "../../api/auth/login/post";
+import dataProvider from "../../api/dataProvider";
 import Form from "../../components/forms/Form";
 import Input from "../../components/forms/inputs/Input";
 import Container from "../../components/layout/Container";
@@ -24,7 +24,7 @@ const Login: FC = () => {
 	const onSubmit = useCallback(
 		(values: LoginFieldValues) => {
 			setLoading(true);
-			postAuthLogin<{ access_token: string }>(values)
+			dataProvider.endpoints.auth_login.post<{ access_token: string }>?.(values)
 				.then((res) => {
 					setAccessToken(res.access_token);
 				})

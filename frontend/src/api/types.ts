@@ -1,10 +1,8 @@
 import { API_METHODS } from "./endpoints";
 
 export interface GetList<T = unknown> {
-	count: number;
-	next: string | null;
-	previous: string | null;
-	results: T[];
+	data: T[];
+	total: number;
 }
 
 export interface Filters {

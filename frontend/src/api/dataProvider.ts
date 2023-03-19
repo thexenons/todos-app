@@ -1,7 +1,8 @@
+import { getAccessToken } from "../state/user";
 import { API_BASE_URL } from "./constants";
 import { API_METHODS, ENDPOINT } from "./endpoints";
 import { Filters, GetList, Options } from "./types";
-import { getEndpointPath } from "./utils";
+import { generateEndpointsFunctions, getEndpointPath } from "./utils";
 
 export const parseFilters = (filters: Filters) => {
 	const { limit = 20, page = 1 } = filters;
@@ -21,10 +22,13 @@ const urlFetch = async <T = unknown>(url: string, options?: Options) => {
 
 	if (filters) finalUrl = `${url}?${parseFilters(filters)}`;
 
+	const accessToken = getAccessToken();
+
 	const response = await fetch(finalUrl, {
 		method,
 		headers: {
 			"Content-Type": "application/json",
+			...(accessToken && { Authorization: `Bearer ${accessToken}` }),
 			...options?.headers,
 		},
 		body: body ? JSON.stringify(body) : undefined,
@@ -70,13 +74,22 @@ const deleteFn = async <T = unknown>(endpoint: ENDPOINT, id: number) =>
 		method: API_METHODS.DELETE,
 	});
 
-const DataProvider = {
+const dataProvider: {
+	urlFetch: typeof urlFetch;
+	[API_METHODS.GET_LIST]: typeof getListFn;
+	[API_METHODS.GET]: typeof getFn;
+	[API_METHODS.POST]: typeof postFn;
+	[API_METHODS.PATCH]: typeof patchFn;
+	[API_METHODS.DELETE]: typeof deleteFn;
+	endpoints: ReturnType<typeof generateEndpointsFunctions>;
+} = {
 	urlFetch,
-	getList: getListFn,
-	get: getFn,
-	post: postFn,
-	patch: patchFn,
-	delete: deleteFn,
+	[API_METHODS.GET_LIST]: getListFn,
+	[API_METHODS.GET]: getFn,
+	[API_METHODS.POST]: postFn,
+	[API_METHODS.PATCH]: patchFn,
+	[API_METHODS.DELETE]: deleteFn,
+	endpoints: generateEndpointsFunctions(),
 };
 
-export default DataProvider;
+export default dataProvider;
