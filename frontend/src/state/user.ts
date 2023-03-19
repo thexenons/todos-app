@@ -8,4 +8,6 @@ export const accessTokenAtom = atomWithStorage<string | null>(
 export const getAccessToken = () =>
 	JSON.parse(localStorage.getItem("accessToken") || "null");
 
+export const removeAccessToken = () => localStorage.removeItem("accessToken");
+
 export const userAtom = atomWithStorage("user", localStorage.getItem("user"));

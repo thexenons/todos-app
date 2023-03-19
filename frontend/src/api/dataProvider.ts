@@ -1,4 +1,4 @@
-import { getAccessToken } from "../state/user";
+import { getAccessToken, removeAccessToken } from "../state/user";
 import { API_BASE_URL } from "./constants";
 import { API_METHODS, ENDPOINT } from "./endpoints";
 import { Filters, GetList, Options } from "./types";
@@ -33,7 +33,14 @@ const urlFetch = async <T = unknown>(url: string, options?: Options) => {
 		},
 		body: body ? JSON.stringify(body) : undefined,
 	});
-	if (!response.ok) throw new Error(response.statusText);
+	if (!response.ok) {
+		if (response.statusText === "Unauthorized") {
+			removeAccessToken();
+			window.location.reload();
+		}
+
+		throw new Error(response.statusText);
+	}
 
 	const data: T = await response.json();
 	return data;
