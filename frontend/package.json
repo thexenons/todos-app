@@ -8,8 +8,9 @@
 		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"lint": "eslint . --ext .ts,.tsx",
-		"lint:fix": "yarn lint -- --fix",
-		"format": "prettier --write ."
+		"lint:fix": "yarn lint --fix",
+		"format": "prettier --write .",
+		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@fontsource/lato": "^4.5.10",

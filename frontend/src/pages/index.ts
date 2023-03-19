@@ -22,14 +22,15 @@ const pages: Pages = {
 			return await (await import("./Test")).getInitialData();
 		},
 		component: lazy(() => import("./Test")),
+		isProtected: true,
 		children: {
 			[PageKey.test2]: {
-				path: "/test2",
-				title: "Test",
-				loader: async () => {
-					return await (await import("./Test")).getInitialData();
+				path: "/:id",
+				title: "Test 2",
+				loader: async (args) => {
+					return await (await import("./Test/Test2")).getInitialData(args);
 				},
-				component: lazy(() => import("./Test")),
+				component: lazy(() => import("./Test/Test2")),
 			},
 		},
 	},
