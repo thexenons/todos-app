@@ -1,3 +1,3 @@
 export interface TestParams {
-  title: string;
+	title: string;
 }
