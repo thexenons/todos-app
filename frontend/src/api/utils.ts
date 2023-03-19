@@ -12,7 +12,7 @@ export const generateEndpointFunctions = (endpoint: ENDPOINT) => {
 	const endpointConfig = getEndpointConfig(endpoint);
 
 	const returnValue: {
-		[API_METHODS.GET]?: <T = unknown>(id: number) => Promise<T>;
+		[API_METHODS.GET]?: <T = unknown>(id?: number) => Promise<T>;
 		[API_METHODS.GET_LIST]?: <T = unknown>(
 			filters?: Filters
 		) => Promise<GetList<T>>;
@@ -26,7 +26,7 @@ export const generateEndpointFunctions = (endpoint: ENDPOINT) => {
 
 	for (const method of endpointConfig.methods) {
 		if (method === API_METHODS.GET) {
-			returnValue.get = <T = unknown>(id: number) =>
+			returnValue.get = <T = unknown>(id?: number) =>
 				dataProvider.get<T>(endpoint, id);
 		}
 

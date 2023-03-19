@@ -8,12 +8,12 @@ import ListTodos from "../../../components/organisms/ListTodos";
 import { getPagePath } from "../../../router/utils";
 import { PageKey } from "../../types";
 
-const Test2: FC = () => {
+const TodosListSingle: FC = () => {
 	const navigate = useNavigate();
 	const { todos_list } = useLoaderData() as { todos_list?: TodosList };
 
 	const onBack = () => {
-		navigate(getPagePath(PageKey.test));
+		navigate(getPagePath(PageKey.home));
 	};
 
 	if (!todos_list) return null;
@@ -43,4 +43,4 @@ export async function getInitialData({ params }: LoaderFunctionArgs): Promise<{
 	};
 }
 
-export default Test2;
+export default TodosListSingle;

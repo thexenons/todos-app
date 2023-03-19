@@ -24,7 +24,7 @@ export const API_ENDPOINTS = {
 		path: "/users",
 	},
 	[ENDPOINT.USERS_ME]: {
-		methods: [API_METHODS.GET_LIST, API_METHODS.PATCH],
+		methods: [API_METHODS.GET, API_METHODS.PATCH],
 		path: "/users/me",
 	},
 	[ENDPOINT.TODOS_LISTS]: {

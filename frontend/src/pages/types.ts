@@ -3,7 +3,9 @@ import type { LoaderFunction } from "react-router-dom";
 
 export enum PageKey {
 	home = "home",
+	todosListSingle = "todosListSingle",
 	login = "login",
+	register = "register",
 	test = "test",
 	test2 = "test2",
 }

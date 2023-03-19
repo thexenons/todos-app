@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { RouteObject } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -9,12 +10,16 @@ import { getPagePath } from "./utils";
 export function parsePageToRoute(key: PageKey, page: Page) {
 	const route: RouteObject = {
 		path: getPagePath(key),
-		element: page.isProtected ? (
-			<ProtectedRoute key={key}>
-				<page.component />
-			</ProtectedRoute>
-		) : (
-			<page.component key={key} />
+		element: (
+			<Suspense fallback={<div>Loading...</div>}>
+				{page.isProtected ? (
+					<ProtectedRoute key={key}>
+						<page.component />
+					</ProtectedRoute>
+				) : (
+					<page.component key={key} />
+				)}
+			</Suspense>
 		),
 		loader: page.loader,
 	};

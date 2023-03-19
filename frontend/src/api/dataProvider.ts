@@ -1,3 +1,5 @@
+import { PageKey } from "../pages";
+import { getPagePath } from "../router/utils";
 import { getAccessToken, removeAccessToken } from "../state/user";
 import { API_BASE_URL } from "./constants";
 import { API_METHODS, ENDPOINT } from "./endpoints";
@@ -36,7 +38,7 @@ const urlFetch = async <T = unknown>(url: string, options?: Options) => {
 	if (!response.ok) {
 		if (response.statusText === "Unauthorized") {
 			removeAccessToken();
-			window.location.reload();
+			window.location.href = getPagePath(PageKey.home);
 		}
 
 		throw new Error(response.statusText);
@@ -57,8 +59,10 @@ const getListFn = async <T = unknown>(
 		filters,
 	});
 
-const getFn = async <T = unknown>(endpoint: ENDPOINT, id: number) =>
-	await urlFetch<T>(`${API_BASE_URL}${getEndpointPath(endpoint)}/${id}`);
+const getFn = async <T = unknown>(endpoint: ENDPOINT, id?: number) =>
+	await urlFetch<T>(
+		`${API_BASE_URL}${getEndpointPath(endpoint)}${id ? `/${id}` : ""}`
+	);
 
 const postFn = async <T = unknown>(endpoint: ENDPOINT, body: Options["body"]) =>
 	await urlFetch<T>(`${API_BASE_URL}${getEndpointPath(endpoint)}`, {

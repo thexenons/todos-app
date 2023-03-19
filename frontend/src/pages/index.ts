@@ -7,32 +7,33 @@ const pages: Pages = {
 	[PageKey.home]: {
 		path: "/",
 		title: "Home",
+		loader: async () => {
+			return await (await import("./Home")).getInitialData();
+		},
 		component: lazy(() => import("./Home")),
 		isProtected: true,
+		children: {
+			[PageKey.todosListSingle]: {
+				path: "/:id",
+				title: "Todos List Single",
+				loader: async (args) => {
+					return await (
+						await import("./Home/TodosListSingle")
+					).getInitialData(args);
+				},
+				component: lazy(() => import("./Home/TodosListSingle")),
+			},
+		},
 	},
 	[PageKey.login]: {
 		path: "/login",
 		title: "Login",
 		component: lazy(() => import("./Login")),
 	},
-	[PageKey.test]: {
-		path: "/test",
-		title: "Test",
-		loader: async () => {
-			return await (await import("./Test")).getInitialData();
-		},
-		component: lazy(() => import("./Test")),
-		isProtected: true,
-		children: {
-			[PageKey.test2]: {
-				path: "/:id",
-				title: "Test 2",
-				loader: async (args) => {
-					return await (await import("./Test/Test2")).getInitialData(args);
-				},
-				component: lazy(() => import("./Test/Test2")),
-			},
-		},
+	[PageKey.register]: {
+		path: "/register",
+		title: "Register",
+		component: lazy(() => import("./Register")),
 	},
 };
 
