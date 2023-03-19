@@ -14,7 +14,7 @@ export const generateEndpointFunctions = (endpoint: ENDPOINT) => {
 	const returnValue: {
 		[API_METHODS.GET]?: <T = unknown>(id: number) => Promise<T>;
 		[API_METHODS.GET_LIST]?: <T = unknown>(
-			filters: Filters
+			filters?: Filters
 		) => Promise<GetList<T>>;
 		[API_METHODS.POST]?: <T = unknown>(body: unknown) => Promise<T>;
 		[API_METHODS.PATCH]?: <T = unknown>(
@@ -31,7 +31,7 @@ export const generateEndpointFunctions = (endpoint: ENDPOINT) => {
 		}
 
 		if (method === API_METHODS.GET_LIST) {
-			returnValue.getList = <T = unknown>(filters: Filters) =>
+			returnValue.getList = <T = unknown>(filters?: Filters) =>
 				dataProvider.getList<T>(endpoint, filters);
 		}
 

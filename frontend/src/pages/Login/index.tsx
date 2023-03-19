@@ -1,11 +1,11 @@
 import { useAtom } from "jotai";
 import { FC, useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import dataProvider from "../../api/dataProvider";
 import Form from "../../components/forms/Form";
 import Input from "../../components/forms/inputs/Input";
 import Container from "../../components/layout/Container";
-import router from "../../router";
 import { getPagePath } from "../../router/utils";
 import { accessTokenAtom } from "../../state/user";
 import { PageKey } from "../types";
@@ -14,12 +14,13 @@ import { LoginFieldValues } from "./types";
 const Login: FC = () => {
 	const [accessToken, setAccessToken] = useAtom(accessTokenAtom);
 	const [isLoading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (accessToken) {
-			router.navigate(getPagePath(PageKey.home));
+			navigate(getPagePath(PageKey.home));
 		}
-	}, [accessToken]);
+	}, [accessToken, navigate]);
 
 	const onSubmit = useCallback(
 		(values: LoginFieldValues) => {

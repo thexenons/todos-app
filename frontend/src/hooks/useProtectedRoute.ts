@@ -1,19 +1,20 @@
 import { useAtomValue } from "jotai";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { PageKey } from "../pages";
-import router from "../router";
 import { getPagePath } from "../router/utils";
 import { accessTokenAtom } from "../state/user";
 
 const useProtectedRoute = (): boolean => {
 	const accessToken = useAtomValue(accessTokenAtom);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (!accessToken) {
-			router.navigate(getPagePath(PageKey.login));
+			navigate(getPagePath(PageKey.login));
 		}
-	}, [accessToken]);
+	}, [accessToken, navigate]);
 
 	return !!accessToken;
 };
