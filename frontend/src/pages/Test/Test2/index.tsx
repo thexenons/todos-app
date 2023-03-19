@@ -1,21 +1,29 @@
-import { FC } from "react";
+import type { FC } from "react";
 import type { LoaderFunctionArgs } from "react-router-dom";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 import dataProvider from "../../../api/dataProvider";
-import { TodosList } from "../../../api/entities";
+import type { TodosList } from "../../../api/entities";
+import ListTodos from "../../../components/organisms/ListTodos";
+import { getPagePath } from "../../../router/utils";
+import { PageKey } from "../../types";
 
 const Test2: FC = () => {
+	const navigate = useNavigate();
 	const { todos_list } = useLoaderData() as { todos_list?: TodosList };
+
+	const onBack = () => {
+		navigate(getPagePath(PageKey.test));
+	};
 
 	if (!todos_list) return null;
 
 	return (
-		<ul>
-			{todos_list.todos.map((todo) => (
-				<li key={todo.id}>{todo.name}</li>
-			))}
-		</ul>
+		<ListTodos
+			todos={todos_list.todos}
+			onClickTodo={console.log}
+			onBack={onBack}
+		/>
 	);
 };
 

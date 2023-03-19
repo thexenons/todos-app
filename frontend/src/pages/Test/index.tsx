@@ -1,30 +1,26 @@
 import { Children, FC } from "react";
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 
-import { ENDPOINT } from "../../api/endpoints";
+import dataProvider from "../../api/dataProvider";
 import { TodosList } from "../../api/entities";
 import Link from "../../components/atoms/Link";
 import Container from "../../components/layout/Container";
-import useFetchGetList from "../../hooks/fetch/useFetchGetList";
-import router from "../../router";
+import ListTodosLists from "../../components/organisms/ListTodosLists";
 import { getPagePath } from "../../router/utils";
 import pages, { PageKey } from "..";
 import type { TestParams } from "./types";
 
 const Test: FC = () => {
-	const { title = "" } = useLoaderData() as TestParams;
-
-	const { data: todos_lists } = useFetchGetList<TodosList>(
-		ENDPOINT.TODOS_LISTS
-	);
+	const navigate = useNavigate();
+	const { todosLists } = useLoaderData() as TestParams;
 
 	const onTodosListClick = (todos_list: TodosList) => {
-		router.navigate(`${getPagePath(PageKey.test)}/${todos_list.id}`);
+		navigate(`${getPagePath(PageKey.test)}/${todos_list.id}`);
 	};
 
 	return (
 		<Container>
-			<h1>{title}</h1>
+			<h1>Todos Lists</h1>
 			<ul>
 				{Children.toArray(
 					Object.keys(pages).map((pageKey) => (
@@ -48,32 +44,24 @@ const Test: FC = () => {
 				)}
 			</ul>
 			<div>
-				<div>
-					{todos_lists && (
-						<ul>
-							{todos_lists.data.map((todos_list) => (
-								<li
-									key={todos_list.id}
-									role="presentation"
-									onClick={() => onTodosListClick(todos_list)}
-								>
-									{todos_list.name} ({todos_list.id})
-								</li>
-							))}
-						</ul>
-					)}
-				</div>
-				<div>
-					<Outlet />
-				</div>
+				{todosLists && (
+					<ListTodosLists
+						todosLists={todosLists}
+						onClickTodosList={onTodosListClick}
+					/>
+				)}
+				<Outlet />
 			</div>
 		</Container>
 	);
 };
 
 export async function getInitialData(): Promise<TestParams> {
+	const todos_list = await dataProvider.endpoints.todos_lists
+		.getList<TodosList>?.();
+
 	return {
-		title: "Test",
+		todosLists: todos_list?.data,
 	};
 }
 
