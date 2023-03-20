@@ -1,6 +1,6 @@
 import { PageKey } from "../pages";
 import { getPagePath } from "../router/utils";
-import { getAccessToken, removeAccessToken } from "../state/user";
+import { getAccessToken, logout } from "../state/user";
 import { API_BASE_URL } from "./constants";
 import { API_METHODS, ENDPOINT } from "./endpoints";
 import { Filters, GetList, Options } from "./types";
@@ -37,8 +37,9 @@ const urlFetch = async <T = unknown>(url: string, options?: Options) => {
 	});
 	if (!response.ok) {
 		if (response.statusText === "Unauthorized") {
-			removeAccessToken();
-			window.location.href = getPagePath(PageKey.home);
+			logout();
+			window.location.href = getPagePath(PageKey.login);
+			return null;
 		}
 
 		throw new Error(response.statusText);
