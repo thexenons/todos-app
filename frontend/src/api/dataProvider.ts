@@ -39,7 +39,7 @@ const urlFetch = async <T = unknown>(url: string, options?: Options) => {
 		if (response.statusText === "Unauthorized") {
 			logout();
 			window.location.href = getPagePath(PageKey.login);
-			return null;
+			return;
 		}
 
 		throw new Error(response.statusText);

@@ -6,8 +6,9 @@ export enum PageKey {
 	todosListSingle = "todosListSingle",
 	login = "login",
 	register = "register",
+
 	test = "test",
-	test2 = "test2",
+	components = "components",
 }
 export interface Page {
 	path: string;

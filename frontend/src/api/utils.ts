@@ -12,16 +12,16 @@ export const generateEndpointFunctions = (endpoint: ENDPOINT) => {
 	const endpointConfig = getEndpointConfig(endpoint);
 
 	const returnValue: {
-		[API_METHODS.GET]?: <T = unknown>(id?: number) => Promise<T>;
+		[API_METHODS.GET]?: <T = unknown>(id?: number) => Promise<T | undefined>;
 		[API_METHODS.GET_LIST]?: <T = unknown>(
 			filters?: Filters
-		) => Promise<GetList<T>>;
-		[API_METHODS.POST]?: <T = unknown>(body: unknown) => Promise<T>;
+		) => Promise<GetList<T> | undefined>;
+		[API_METHODS.POST]?: <T = unknown>(body: unknown) => Promise<T | undefined>;
 		[API_METHODS.PATCH]?: <T = unknown>(
 			id: number,
 			body: unknown
-		) => Promise<T>;
-		[API_METHODS.DELETE]?: <T = unknown>(id: number) => Promise<T>;
+		) => Promise<T | undefined>;
+		[API_METHODS.DELETE]?: <T = unknown>(id: number) => Promise<T | undefined>;
 	} = {};
 
 	for (const method of endpointConfig.methods) {

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
-import dataProvider from "../../api/dataProvider";
 import { ENDPOINT } from "../../api/endpoints";
+import useDataProvider from "./useDataProvider";
 
 const useFetchGet = <T = unknown>(endpoint: ENDPOINT, id: number) => {
-	const [data, setData] = useState<T | null>(null);
+	const dataProvider = useDataProvider();
+	const [data, setData] = useState<T>();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<unknown>(null);
 
@@ -20,7 +21,7 @@ const useFetchGet = <T = unknown>(endpoint: ENDPOINT, id: number) => {
 			setLoading(false);
 		};
 		fetchData();
-	}, [endpoint, id]);
+	}, [dataProvider, endpoint, id]);
 
 	return { data, loading, error };
 };

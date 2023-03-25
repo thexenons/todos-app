@@ -7,23 +7,7 @@ const pages: Pages = {
 	[PageKey.home]: {
 		path: "/",
 		title: "Home",
-		loader: async () => {
-			return await (await import("./Home")).getInitialData();
-		},
 		component: lazy(() => import("./Home")),
-		isProtected: true,
-		children: {
-			[PageKey.todosListSingle]: {
-				path: "/:id",
-				title: "Todos List Single",
-				loader: async (args) => {
-					return await (
-						await import("./Home/TodosListSingle")
-					).getInitialData(args);
-				},
-				component: lazy(() => import("./Home/TodosListSingle")),
-			},
-		},
 	},
 	[PageKey.login]: {
 		path: "/login",
@@ -34,6 +18,33 @@ const pages: Pages = {
 		path: "/register",
 		title: "Register",
 		component: lazy(() => import("./Register")),
+	},
+
+	[PageKey.test]: {
+		path: "/",
+		title: "Test",
+		loader: async () => {
+			return await (await import("./Test")).getInitialData();
+		},
+		component: lazy(() => import("./Test")),
+		isProtected: true,
+		children: {
+			[PageKey.todosListSingle]: {
+				path: "/:id",
+				title: "Todos List Single",
+				loader: async (args) => {
+					return await (
+						await import("./Test/TodosListSingle")
+					).getInitialData(args);
+				},
+				component: lazy(() => import("./Test/TodosListSingle")),
+			},
+		},
+	},
+	[PageKey.components]: {
+		path: "/components",
+		title: "Components",
+		component: lazy(() => import("./Components")),
 	},
 };
 

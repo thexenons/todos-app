@@ -1,5 +1,5 @@
 import { TodosList } from "../../api/entities";
 
-export interface HomeParams {
+export interface TestParams {
 	todosLists?: TodosList[];
 }

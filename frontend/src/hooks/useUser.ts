@@ -1,19 +1,22 @@
 import { useAtom, useAtomValue } from "jotai";
 import { useEffect } from "react";
 
-import dataProvider from "../api/dataProvider";
 import { User } from "../api/entities";
 import { accessTokenAtom, userAtom } from "../state/user";
+import useDataProvider from "./fetch/useDataProvider";
 
 const useUser = () => {
+	const dataProvider = useDataProvider();
 	const [user, setUser] = useAtom(userAtom);
 	const accessToken = useAtomValue(accessTokenAtom);
 
 	useEffect(() => {
 		if (!accessToken || !!user) return;
 
-		dataProvider.endpoints.users_me.get<User>?.().then(setUser);
-	}, [accessToken, setUser, user]);
+		dataProvider.endpoints.users_me.get<User>?.().then(
+			(res) => res && setUser(res)
+		);
+	}, [accessToken, setUser, user, dataProvider]);
 
 	return user;
 };

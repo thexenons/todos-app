@@ -1,15 +1,16 @@
 import { FC, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import dataProvider from "../../api/dataProvider";
 import Form from "../../components/forms/Form";
 import Input from "../../components/forms/inputs/Input";
 import Container from "../../components/layout/Container";
+import useDataProvider from "../../hooks/fetch/useDataProvider";
 import { getPagePath } from "../../router/utils";
 import { PageKey } from "../types";
 import type { RegisterFieldValues } from "./types";
 
 const Register: FC = () => {
+	const dataProvider = useDataProvider();
 	const navigate = useNavigate();
 	const [isLoading, setLoading] = useState(false);
 
@@ -23,7 +24,7 @@ const Register: FC = () => {
 				})
 				.finally(() => setLoading(false));
 		},
-		[navigate]
+		[dataProvider.endpoints.users, navigate]
 	);
 
 	return (

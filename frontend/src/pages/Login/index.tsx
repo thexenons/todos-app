@@ -2,16 +2,17 @@ import { useAtom } from "jotai";
 import { FC, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import dataProvider from "../../api/dataProvider";
 import Form from "../../components/forms/Form";
 import Input from "../../components/forms/inputs/Input";
 import Container from "../../components/layout/Container";
+import useDataProvider from "../../hooks/fetch/useDataProvider";
 import { getPagePath } from "../../router/utils";
 import { accessTokenAtom } from "../../state/user";
 import { PageKey } from "../types";
 import { LoginFieldValues } from "./types";
 
 const Login: FC = () => {
+	const dataProvider = useDataProvider();
 	const [accessToken, setAccessToken] = useAtom(accessTokenAtom);
 	const [isLoading, setLoading] = useState(false);
 	const navigate = useNavigate();
@@ -27,11 +28,11 @@ const Login: FC = () => {
 			setLoading(true);
 			dataProvider.endpoints.auth_login.post<{ access_token: string }>?.(values)
 				.then((res) => {
-					setAccessToken(res.access_token);
+					if (res) setAccessToken(res.access_token);
 				})
 				.finally(() => setLoading(false));
 		},
-		[setAccessToken]
+		[dataProvider.endpoints.auth_login.post, setAccessToken]
 	);
 
 	return (
