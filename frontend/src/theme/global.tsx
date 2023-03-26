@@ -17,15 +17,13 @@ const GlobalStyles = createGlobalStyle`
     }
 
     #root {
-        display: grid;
+        display: flex;
         min-height: 100vh;
-        grid-template-areas: "header"
-                            "main"
-                            "footer";
-        grid-template-rows: auto 1fr auto;
 
         main {
-            min-width: 0;
+            flex: 1 1 auto;
+            background-color: ${({ theme }) => theme.colors.background.default};
+            color: ${({ theme }) => theme.colors.text.primary};
         }
 
         h1, h2, h3, h4, h5, h6, p, span {

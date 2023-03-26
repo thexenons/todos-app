@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { RouteObject } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 
+import MainLayout from "../components/layout/MainLayout";
 import type { Page, PageKey } from "../pages";
 import pages from "../pages";
 import ProtectedRoute from "./ProtectedRoute";
@@ -11,15 +12,17 @@ export function parsePageToRoute(key: PageKey, page: Page) {
 	const route: RouteObject = {
 		path: getPagePath(key),
 		element: (
-			<Suspense fallback={<div>Loading...</div>}>
-				{page.isProtected ? (
-					<ProtectedRoute key={key}>
-						<page.component />
-					</ProtectedRoute>
-				) : (
-					<page.component key={key} />
-				)}
-			</Suspense>
+			<MainLayout>
+				<Suspense fallback={<div>Loading...</div>}>
+					{page.isProtected ? (
+						<ProtectedRoute key={key}>
+							<page.component />
+						</ProtectedRoute>
+					) : (
+						<page.component key={key} />
+					)}
+				</Suspense>
+			</MainLayout>
 		),
 		loader: page.loader,
 	};

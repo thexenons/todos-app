@@ -12,7 +12,7 @@ export enum PageKey {
 }
 export interface Page {
 	path: string;
-	title: string;
+	title?: string;
 	component: React.LazyExoticComponent<FC>;
 	loader?: LoaderFunction;
 	children?: Partial<Record<PageKey, Page>>;

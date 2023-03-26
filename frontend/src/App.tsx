@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { lazy } from "react";
 
-import MainLayout from "./components/layout/MainLayout";
 import CustomRouterProvider from "./router/provider";
 import GlobalStyles from "./theme/global";
 import CustomThemeProvider from "./theme/provider";
@@ -16,9 +15,7 @@ const App: FC = () => (
 	<>
 		<CustomThemeProvider>
 			<GlobalStyles />
-			<MainLayout>
-				<CustomRouterProvider />
-			</MainLayout>
+			<CustomRouterProvider />
 		</CustomThemeProvider>
 		{import.meta.env.DEV && <DevTools />}
 	</>

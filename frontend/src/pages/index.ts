@@ -11,17 +11,15 @@ const pages: Pages = {
 	},
 	[PageKey.login]: {
 		path: "/login",
-		title: "Login",
 		component: lazy(() => import("./Login")),
 	},
 	[PageKey.register]: {
 		path: "/register",
-		title: "Register",
 		component: lazy(() => import("./Register")),
 	},
 
 	[PageKey.test]: {
-		path: "/",
+		path: "/test",
 		title: "Test",
 		loader: async () => {
 			return await (await import("./Test")).getInitialData();
