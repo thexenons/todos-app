@@ -26,7 +26,16 @@ interface EnhancedColorScheme extends ColorScheme {
 	dark: string;
 }
 
-const grey: ColorScheme = {
+function getColor(colorScheme: ColorScheme): EnhancedColorScheme {
+	return {
+		...colorScheme,
+		main: colorScheme[500],
+		dark: colorScheme[900],
+		light: colorScheme[300],
+	};
+}
+
+const grey = getColor({
 	50: "#fafafa",
 	100: "#f5f5f5",
 	200: "#eeeeee",
@@ -41,9 +50,9 @@ const grey: ColorScheme = {
 	A200: "#eeeeee",
 	A400: "#bdbdbd",
 	A700: "#616161",
-};
+});
 
-const indigo: ColorScheme = {
+const indigo = getColor({
 	50: "#e8eaf6",
 	100: "#c5cae9",
 	200: "#9fa8da",
@@ -58,9 +67,9 @@ const indigo: ColorScheme = {
 	A200: "#536dfe",
 	A400: "#3d5afe",
 	A700: "#304ffe",
-};
+});
 
-const teal: ColorScheme = {
+const teal = getColor({
 	50: "#e0f2f1",
 	100: "#b2dfdb",
 	200: "#80cbc4",
@@ -75,20 +84,11 @@ const teal: ColorScheme = {
 	A200: "#64ffda",
 	A400: "#1de9b6",
 	A700: "#00bfa5",
-};
+});
 
-function getColor(colorScheme: ColorScheme): EnhancedColorScheme {
-	return {
-		...colorScheme,
-		main: colorScheme[500],
-		dark: colorScheme[900],
-		light: colorScheme[100],
-	};
-}
+const primary = indigo;
 
-const primary = getColor(indigo);
-
-const secondary = getColor(teal);
+const secondary = teal;
 
 const error = {
 	main: "#f44336",

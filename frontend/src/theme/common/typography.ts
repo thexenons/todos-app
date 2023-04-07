@@ -63,7 +63,7 @@ function getTypographyStyle(typographyStyle: TypographyStyle) {
 		line-height: ${typographyStyle.lineHeight};
 		letter-spacing: ${typographyStyle.letterSpacing};
 		${typographyStyle.textTransform
-			? `text-transform: ${typographyStyle.textTransform}`
+			? `text-transform: ${typographyStyle.textTransform};`
 			: ""}
 	`;
 }

@@ -1,3 +1,6 @@
 import { PropsWithChildren } from "react";
 
-export type SidebarProps = PropsWithChildren;
+export interface SidebarProps extends PropsWithChildren {
+	isSidebarOpen?: boolean;
+	setSidebarOpen?: (isSidebarOpen: boolean) => void;
+}

@@ -1,11 +1,16 @@
-import type { FC } from "react";
+import { FC, Suspense } from "react";
+import { Outlet } from "react-router-dom";
 
 import Container from "../../components/layout/Container";
 import ComponentsLayout from "./Layout";
 
 const Components: FC = () => (
 	<ComponentsLayout>
-		<Container>Components</Container>
+		<Container>
+			<Suspense fallback={<div>Loading...</div>}>
+				<Outlet />
+			</Suspense>
+		</Container>
 	</ComponentsLayout>
 );
 

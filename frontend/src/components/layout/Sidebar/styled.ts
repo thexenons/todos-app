@@ -1,46 +1,75 @@
 import styled, { css } from "styled-components";
 
-export const SidebarButton = styled.button`
+import Button from "../../atoms/Button";
+
+export const SidebarButton = styled(Button)`
 	align-self: flex-end;
-	display: block;
-	appearance: none;
-	background-color: ${({ theme }) => theme.colors.primary.light};
-	color: ${({ theme }) => theme.colors.primary.dark};
-	border: 1px solid ${({ theme }) => theme.colors.primary.main};
-	border-radius: 100%;
-	width: 24px;
-	height: 24px;
+	${({ theme }) => theme.mixins.margin({ all: 0.5 })}
+`;
+
+export const SidebarButtonContent = styled.span`
+	transform: rotate(90deg);
+	transition: transform 0.3s;
+
+	${({ theme }) => theme.media.md.up} {
+		transform: rotate(0deg);
+	}
 `;
 
 export const SidebarContentWrapper = styled.div`
 	overflow: hidden;
 	flex: 1 1 auto;
-	transition: width 0.3s;
+	transition: height 0.3s, width 0.3s;
 `;
 
 export const SidebarContent = styled.div`
 	${({ theme }) => theme.mixins.padding({ all: 2 })}
-	height: 100%;
 	${({ theme }) =>
 		theme.mixins.flex({ direction: "column", gap: theme.spacing(2) })}
 `;
 
-export const SidebarWrapper = styled.aside<{ $isOpen: boolean }>`
+export const SidebarWrapper = styled.aside<{
+	$isOpen: boolean;
+	$height: number;
+}>`
 	position: relative;
 	${({ theme }) => theme.mixins.flex({ direction: "column" })}
 	background-color: ${({ theme }) => theme.colors.background.paper};
 	color: ${({ theme }) => theme.colors.text.primary};
 
-	${({ $isOpen }) =>
+	${({ $isOpen, $height }) =>
 		$isOpen
 			? css`
 					${SidebarContentWrapper} {
-						width: 240px;
+						height: ${$height ? `${$height}px` : "auto"};
+					}
+
+					${SidebarButtonContent} {
+						transform: rotate(-90deg);
 					}
 			  `
 			: css`
 					${SidebarContentWrapper} {
-						width: 0;
+						height: 0px;
 					}
 			  `}
+
+	${({ theme }) => theme.media.md.up} {
+		${({ $isOpen }) =>
+			$isOpen
+				? css`
+						${SidebarContentWrapper} {
+							width: 240px;
+						}
+
+						${SidebarButtonContent} {
+							transform: rotate(180deg);
+						}
+				  `
+				: css`
+						${SidebarContentWrapper} {
+							width: 0px;
+						}
+				  `}
+	}
 `;

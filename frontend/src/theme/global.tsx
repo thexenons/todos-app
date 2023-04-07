@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     #root {
-        display: flex;
+        ${({ theme }) => theme.mixins.flex({ direction: "column" })}
         min-height: 100vh;
 
         main {
@@ -40,6 +40,10 @@ const GlobalStyles = createGlobalStyle`
 
         & > footer {
             grid-area: footer;
+        }
+
+        ${({ theme }) => theme.media.md.up} {
+            ${({ theme }) => theme.mixins.flex({ direction: "row" })}
         }
     }
 `;

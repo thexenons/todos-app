@@ -21,3 +21,23 @@ export function getPagePath(
 
 	return "";
 }
+
+export function getPageKey(
+	targetPath: string,
+	initialPages: Pages = pages
+): PageKey | undefined {
+	for (const pageKey in initialPages) {
+		const page = pages[pageKey as PageKey] as Page;
+		const path = getPagePath(pageKey as PageKey);
+
+		if (path === targetPath) return pageKey as PageKey;
+
+		if (page?.children) {
+			const childPageKey = getPageKey(targetPath, page.children);
+
+			if (childPageKey) return childPageKey;
+		}
+	}
+}
+
+console.log({ button: getPageKey("/components/button") });

@@ -8,21 +8,27 @@ import pages from "../pages";
 import ProtectedRoute from "./ProtectedRoute";
 import { getPagePath } from "./utils";
 
-export function parsePageToRoute(key: PageKey, page: Page) {
+export function parsePageToRoute(
+	key: PageKey,
+	page: Page,
+	enableLayout = true
+) {
+	const component = page.isProtected ? (
+		<ProtectedRoute key={key}>
+			<page.component />
+		</ProtectedRoute>
+	) : (
+		<page.component key={key} />
+	);
+
 	const route: RouteObject = {
 		path: getPagePath(key),
-		element: (
+		element: enableLayout ? (
 			<MainLayout>
-				<Suspense fallback={<div>Loading...</div>}>
-					{page.isProtected ? (
-						<ProtectedRoute key={key}>
-							<page.component />
-						</ProtectedRoute>
-					) : (
-						<page.component key={key} />
-					)}
-				</Suspense>
+				<Suspense fallback={<div>Loading...</div>}>{component}</Suspense>
 			</MainLayout>
+		) : (
+			component
 		),
 		loader: page.loader,
 	};
@@ -30,7 +36,7 @@ export function parsePageToRoute(key: PageKey, page: Page) {
 	if (page.children) {
 		route.children = Object.entries(page.children).map(
 			([childKey, childPage]) =>
-				parsePageToRoute(childKey as PageKey, childPage)
+				parsePageToRoute(childKey as PageKey, childPage, false)
 		);
 	}
 

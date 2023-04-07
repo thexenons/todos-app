@@ -43,6 +43,13 @@ const pages: Pages = {
 		path: "/components",
 		title: "Components",
 		component: lazy(() => import("./Components")),
+		children: {
+			[PageKey.componentsButton]: {
+				path: "/button",
+				title: "Button",
+				component: lazy(() => import("./Components/Button")),
+			},
+		},
 	},
 };
 
