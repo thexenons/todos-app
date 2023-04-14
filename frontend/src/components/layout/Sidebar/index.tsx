@@ -3,7 +3,7 @@ import { FC, useCallback } from "react";
 import { useElementSize } from "usehooks-ts";
 
 import { sidebarIsOpenAtom } from "../../../state/ui";
-import { ButtonVariants } from "../../atoms/Button/types";
+import { ButtonColorVariants, ButtonVariants } from "../../atoms/Button/types";
 import * as S from "./styled";
 import type { SidebarProps } from "./types";
 
@@ -26,10 +26,11 @@ const Sidebar: FC<SidebarProps> = ({
 		<S.SidebarWrapper $isOpen={!!finalIsSidebarOpen} $height={sizes.height}>
 			<S.SidebarButton
 				isRounded
-				variant={ButtonVariants.outlined}
+				variant={ButtonVariants.contained}
+				colorVariant={ButtonColorVariants.secondary}
 				onClick={toggleSidebar}
 			>
-				<S.SidebarButtonContent>{">"}</S.SidebarButtonContent>
+				<S.SidebarButtonContent />
 			</S.SidebarButton>
 			<S.SidebarContentWrapper>
 				<S.SidebarContent ref={setNode}>{children}</S.SidebarContent>

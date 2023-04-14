@@ -1,3 +1,4 @@
+import { MdNavigateNext } from "react-icons/md";
 import styled, { css } from "styled-components";
 
 import Button from "../../atoms/Button";
@@ -7,7 +8,13 @@ export const SidebarButton = styled(Button)`
 	${({ theme }) => theme.mixins.margin({ all: 0.5 })}
 `;
 
-export const SidebarButtonContent = styled.span`
+export const SidebarButtonContent = styled(MdNavigateNext)`
+	--sidebar-button-content-size: calc(var(--button-size) * 0.75);
+
+	width: var(--sidebar-button-content-size);
+	height: var(--sidebar-button-content-size);
+	margin: calc(var(--sidebar-button-content-size) * -1);
+
 	transform: rotate(90deg);
 	transition: transform 0.3s;
 
@@ -33,6 +40,7 @@ export const SidebarWrapper = styled.aside<{
 	$height: number;
 }>`
 	position: relative;
+	z-index: 2;
 	${({ theme }) => theme.mixins.flex({ direction: "column" })}
 	background-color: ${({ theme }) => theme.colors.background.paper};
 	color: ${({ theme }) => theme.colors.text.primary};
