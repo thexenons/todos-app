@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 export enum ButtonVariants {
 	text = "text",
@@ -16,4 +16,6 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 	variant?: ButtonVariants;
 	colorVariant?: ButtonColorVariants;
 	isRounded?: boolean;
+	leftIcon?: ReactNode | ReactNode[];
+	rightIcon?: ReactNode | ReactNode[];
 }

@@ -8,6 +8,8 @@ const Button: FC<ButtonProps> = ({
 	variant = ButtonVariants.contained,
 	colorVariant = ButtonColorVariants.neutral,
 	isRounded = false,
+	leftIcon,
+	rightIcon,
 	...rest
 }) => (
 	<S.ButtonWrapper
@@ -16,7 +18,9 @@ const Button: FC<ButtonProps> = ({
 		$isRounded={isRounded}
 		{...rest}
 	>
+		{leftIcon && <S.ButtonIconsWrapper>{leftIcon}</S.ButtonIconsWrapper>}
 		{children}
+		{rightIcon && <S.ButtonIconsWrapper>{rightIcon}</S.ButtonIconsWrapper>}
 	</S.ButtonWrapper>
 );
 

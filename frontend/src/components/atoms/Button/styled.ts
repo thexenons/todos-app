@@ -1,4 +1,4 @@
-import { opacify, rgba } from "polished";
+import { rgba } from "polished";
 import styled, { css } from "styled-components";
 
 import { ButtonColorVariants, ButtonVariants } from "./types";
@@ -110,8 +110,13 @@ export const ButtonWrapper = styled.button<{
 	min-height: var(--button-size);
 	min-width: var(--button-size);
 	${({ theme }) =>
-		theme.mixins.flex({ inline: true, align: "center", justify: "center" })}
-	${({ theme }) => theme.mixins.padding({ x: 1.5 })}
+		theme.mixins.flex({
+			inline: true,
+			align: "center",
+			justify: "center",
+			gap: theme.spacing(),
+		})}
+	${({ theme }) => theme.mixins.padding({ x: 1 })}
 	${({ theme }) => theme.typography.getTypographyStyle(theme.typography.button)}
 	transition: background 0.3s, color 0.3s, border-color 0.3s;
 	border-radius: ${({ $isRounded, theme }) =>
@@ -126,4 +131,14 @@ export const ButtonWrapper = styled.button<{
 		cursor: not-allowed;
 		opacity: 0.7;
 	}
+`;
+
+export const ButtonIconsWrapper = styled.span`
+	${({ theme }) =>
+		theme.mixins.flex({
+			inline: true,
+			justify: "center",
+			align: "center",
+			gap: theme.spacing(),
+		})}
 `;

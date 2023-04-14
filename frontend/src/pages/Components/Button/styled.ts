@@ -6,5 +6,5 @@ export const ButtonListWrapper = styled.div`
 `;
 
 export const ButtonsWrapper = styled.div`
-	${({ theme }) => theme.mixins.flex({ gap: theme.spacing(2) })}
+	${({ theme }) => theme.mixins.flex({ gap: theme.spacing(2), wrap: true })}
 `;
