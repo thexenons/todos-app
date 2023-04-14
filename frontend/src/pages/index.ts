@@ -55,6 +55,11 @@ const pages: Pages = {
 				title: "UpdateButton",
 				component: lazy(() => import("./Components/UpdateButton")),
 			},
+			[PageKey.componentsCreateButton]: {
+				path: "/create-button",
+				title: "CreateButton",
+				component: lazy(() => import("./Components/CreateButton")),
+			},
 		},
 	},
 };
