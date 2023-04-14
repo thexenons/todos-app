@@ -1,12 +1,7 @@
 import styled, { css } from "styled-components";
 
-export const LayoutWrapper = styled.div`
-	${({ theme }) => theme.mixins.flex({ direction: "column" })}
-	height: 100%;
-
-	${({ theme }) => theme.media.md.up} {
-		${({ theme }) => theme.mixins.flex({ direction: "row" })}
-	}
+export const Main = styled.main`
+	${({ theme }) => theme.mixins.padding({ y: 2 })}
 `;
 
 export const MenuList = styled.ul`

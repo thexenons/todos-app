@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import Link from "../../../components/atoms/Link";
 import Sidebar from "../../../components/layout/Sidebar";
-import { getPageKey, getPagePath } from "../../../router/utils";
+import { getPageKey } from "../../../router/utils";
 import pages, { PageKey } from "../..";
 import * as S from "./styled";
 
@@ -15,7 +15,7 @@ const componentsPages = Object.entries(
 }));
 
 const ComponentsLayout: FC<PropsWithChildren> = ({ children }) => {
-	const [isSidebarOpen, setSidebarOpen] = useState(false);
+	const [isSidebarOpen, setSidebarOpen] = useState(true);
 	const location = useLocation();
 
 	const links = useMemo(
@@ -44,10 +44,10 @@ const ComponentsLayout: FC<PropsWithChildren> = ({ children }) => {
 	);
 
 	return (
-		<S.LayoutWrapper>
+		<>
 			{sidebar}
-			<div>{children}</div>
-		</S.LayoutWrapper>
+			<S.Main>{children}</S.Main>
+		</>
 	);
 };
 

@@ -18,5 +18,6 @@ export interface Page {
 	loader?: LoaderFunction;
 	children?: Partial<Record<PageKey, Page>>;
 	isProtected?: boolean;
+	hideLayout?: boolean;
 }
 export type Pages = Partial<Record<PageKey, Page>>;

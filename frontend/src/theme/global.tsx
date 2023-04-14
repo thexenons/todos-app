@@ -32,18 +32,6 @@ const GlobalStyles = createGlobalStyle`
             ${({ theme }) => theme.mixins.margin({ all: 0 })}
         }
 
-        & > header {
-            grid-area: header;
-        }
-
-        & > main {
-            grid-area: main;
-        }
-
-        & > footer {
-            grid-area: footer;
-        }
-
         ${({ theme }) => theme.media.md.up} {
             ${({ theme }) => theme.mixins.flex({ direction: "row" })}
         }

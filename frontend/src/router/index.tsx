@@ -23,13 +23,14 @@ export function parsePageToRoute(
 
 	const route: RouteObject = {
 		path: getPagePath(key),
-		element: enableLayout ? (
-			<MainLayout>
-				<Suspense fallback={<div>Loading...</div>}>{component}</Suspense>
-			</MainLayout>
-		) : (
-			component
-		),
+		element:
+			enableLayout && !page.hideLayout ? (
+				<MainLayout>
+					<Suspense fallback={<div>Loading...</div>}>{component}</Suspense>
+				</MainLayout>
+			) : (
+				component
+			),
 		loader: page.loader,
 	};
 

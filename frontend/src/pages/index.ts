@@ -43,6 +43,7 @@ const pages: Pages = {
 		path: "/components",
 		title: "Components",
 		component: lazy(() => import("./Components")),
+		hideLayout: true,
 		children: {
 			[PageKey.componentsButton]: {
 				path: "/button",
