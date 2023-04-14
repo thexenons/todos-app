@@ -10,6 +10,7 @@ export enum PageKey {
 	test = "test",
 	components = "components",
 	componentsButton = "componentsButton",
+	componentsUpdateButton = "componentsUpdateButton",
 }
 export interface Page {
 	path: string;

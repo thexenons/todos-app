@@ -7,7 +7,7 @@ import {
 	ButtonProps,
 	ButtonVariants,
 } from "../../../components/atoms/Button/types";
-import * as S from "./styled";
+import * as SS from "../styled";
 
 const roundedVariants = [
 	{
@@ -74,19 +74,19 @@ const buttonsLists = buttons.reduce<ButtonProps[][]>((prev, curr, index) => {
 }, []);
 
 const ButtonComponentsPage: FC = () => (
-	<S.ButtonListWrapper>
+	<SS.ComponentsListWrapper>
 		<h1>Buttons</h1>
 		{Children.toArray(
 			Object.keys(ButtonVariants).map((buttonVariant) => (
-				<S.ButtonListWrapper>
+				<SS.ComponentsListWrapper>
 					<h2>{buttonVariant}</h2>
 					{Children.toArray(
 						Object.keys(ButtonColorVariants).map((buttonColorVariant) => (
-							<S.ButtonListWrapper>
+							<SS.ComponentsListWrapper>
 								<h3>{buttonColorVariant}</h3>
 								{Children.toArray(
 									buttonsLists.map((buttonsList) => (
-										<S.ButtonsWrapper>
+										<SS.ComponentsRowWrapper>
 											{Children.toArray(
 												buttonsList.map(({ children, ...restButton }) => (
 													<Button
@@ -100,16 +100,16 @@ const ButtonComponentsPage: FC = () => (
 													</Button>
 												))
 											)}
-										</S.ButtonsWrapper>
+										</SS.ComponentsRowWrapper>
 									))
 								)}
-							</S.ButtonListWrapper>
+							</SS.ComponentsListWrapper>
 						))
 					)}
-				</S.ButtonListWrapper>
+				</SS.ComponentsListWrapper>
 			))
 		)}
-	</S.ButtonListWrapper>
+	</SS.ComponentsListWrapper>
 );
 
 export default ButtonComponentsPage;
