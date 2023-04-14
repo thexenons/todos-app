@@ -60,6 +60,11 @@ const pages: Pages = {
 				title: "CreateButton",
 				component: lazy(() => import("./Components/CreateButton")),
 			},
+			[PageKey.componentsDeleteButton]: {
+				path: "/delete-button",
+				title: "DeleteButton",
+				component: lazy(() => import("./Components/DeleteButton")),
+			},
 		},
 	},
 };

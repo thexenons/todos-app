@@ -10,6 +10,7 @@ export enum ButtonColorVariants {
 	primary = "primary",
 	secondary = "secondary",
 	neutral = "neutral",
+	error = "error",
 }
 
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {

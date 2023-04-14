@@ -97,6 +97,19 @@ const buttonWrapperVariants: Record<
 		--button-color-main-text: ${({ theme }) =>
 			theme.colors.getContrastText(theme.colors.grey.dark)};
 	`,
+	[ButtonColorVariants.error]: css`
+		--button-color-light-opacified: ${({ theme }) =>
+			rgba(theme.colors.error.light, 0.1)};
+		--button-color-light: ${({ theme }) => theme.colors.error.light};
+		--button-color-light-text: ${({ theme }) =>
+			theme.colors.getContrastText(theme.colors.error.light)};
+		--button-color-main: ${({ theme }) => theme.colors.error.main};
+		--button-color-main-text: ${({ theme }) =>
+			theme.colors.getContrastText(theme.colors.error.main)};
+		--button-color-dark: ${({ theme }) => theme.colors.error.dark};
+		--button-color-main-text: ${({ theme }) =>
+			theme.colors.getContrastText(theme.colors.error.dark)};
+	`,
 };
 
 export const ButtonWrapper = styled.button<{
