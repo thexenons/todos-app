@@ -65,6 +65,11 @@ const pages: Pages = {
 				title: "DeleteButton",
 				component: lazy(() => import("./Components/DeleteButton")),
 			},
+			[PageKey.componentsCancelButton]: {
+				path: "/cancel-button",
+				title: "CancelButton",
+				component: lazy(() => import("./Components/CancelButton")),
+			},
 		},
 	},
 };

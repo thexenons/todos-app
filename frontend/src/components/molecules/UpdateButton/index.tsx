@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { MdOutlineUpdate } from "react-icons/md";
+import { MdSave } from "react-icons/md";
 
 import Button from "../../atoms/Button";
 import { ButtonColorVariants, ButtonVariants } from "../../atoms/Button/types";
@@ -9,7 +9,7 @@ const UpdateButton: FC<UpdateButtonProps> = ({ disabled = false }) => (
 	<Button
 		variant={ButtonVariants.contained}
 		colorVariant={ButtonColorVariants.primary}
-		leftIcon={<MdOutlineUpdate />}
+		leftIcon={<MdSave />}
 		disabled={disabled}
 	>
 		Update

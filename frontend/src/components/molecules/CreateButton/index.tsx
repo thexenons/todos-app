@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { MdAddCircleOutline } from "react-icons/md";
+import { MdAdd } from "react-icons/md";
 
 import Button from "../../atoms/Button";
 import { ButtonColorVariants, ButtonVariants } from "../../atoms/Button/types";
@@ -9,7 +9,7 @@ const CreateButton: FC<CreateButtonProps> = ({ disabled = false }) => (
 	<Button
 		variant={ButtonVariants.contained}
 		colorVariant={ButtonColorVariants.primary}
-		leftIcon={<MdAddCircleOutline />}
+		leftIcon={<MdAdd />}
 		disabled={disabled}
 	>
 		Create
