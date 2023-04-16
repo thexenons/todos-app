@@ -1,5 +1,6 @@
 import type { FC } from "react";
 
+import Button from "../../components/atoms/Button";
 import Container from "../../components/layout/Container";
 import useUser from "../../hooks/useUser";
 import { logout } from "../../state/user";
@@ -12,7 +13,7 @@ const Home: FC = () => {
 			<h1>Home</h1>
 			{user && (
 				<div>
-					{user.username} <button onClick={logout}>Logout</button>
+					{user.username} <Button onClick={logout}>Logout</Button>
 				</div>
 			)}
 		</Container>

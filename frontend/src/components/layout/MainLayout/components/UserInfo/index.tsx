@@ -3,6 +3,7 @@ import type { FC } from "react";
 import useUser from "../../../../../hooks/useUser";
 import { PageKey } from "../../../../../pages";
 import { logout } from "../../../../../state/user";
+import Button from "../../../../atoms/Button";
 import Link from "../../../../atoms/Link";
 
 const UserInfo: FC = () => {
@@ -13,7 +14,7 @@ const UserInfo: FC = () => {
 			{user ? (
 				<div>
 					<div>{user.username}</div>
-					<button onClick={logout}>Logout</button>
+					<Button onClick={logout}>Logout</Button>
 				</div>
 			) : (
 				<div>

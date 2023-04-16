@@ -13,7 +13,7 @@ const TodosListSingle: FC = () => {
 	const { todos_list } = useLoaderData() as { todos_list?: TodosList };
 
 	const onBack = () => {
-		navigate(getPagePath(PageKey.home));
+		navigate(getPagePath(PageKey.test));
 	};
 
 	if (!todos_list) return null;

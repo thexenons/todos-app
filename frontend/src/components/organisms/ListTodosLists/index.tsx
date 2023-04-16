@@ -1,5 +1,6 @@
 import { FC } from "react";
 
+import Button from "../../atoms/Button";
 import { ListTodosListsProps } from "./types";
 
 const ListTodosLists: FC<ListTodosListsProps> = ({
@@ -8,7 +9,7 @@ const ListTodosLists: FC<ListTodosListsProps> = ({
 	onBack,
 }) => (
 	<div>
-		<h2>Todos List {onBack && <button onClick={onBack}>Back</button>}</h2>
+		<h2>Todos List {onBack && <Button onClick={onBack}>Back</Button>}</h2>
 		<ul>
 			{todosLists.map((todosList) => (
 				<li

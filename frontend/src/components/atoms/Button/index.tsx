@@ -3,13 +3,11 @@ import { FC } from "react";
 import * as S from "./styled";
 import { ButtonColorVariants, ButtonProps, ButtonVariants } from "./types";
 
-const Button: FC<ButtonProps> = ({
+const ButtonView: FC<ButtonProps> = ({
 	children,
 	variant = ButtonVariants.contained,
 	colorVariant = ButtonColorVariants.neutral,
 	isRounded = false,
-	leftIcon,
-	rightIcon,
 	...rest
 }) => (
 	<S.ButtonWrapper
@@ -18,10 +16,18 @@ const Button: FC<ButtonProps> = ({
 		$isRounded={isRounded}
 		{...rest}
 	>
-		{leftIcon && <S.ButtonIconsWrapper>{leftIcon}</S.ButtonIconsWrapper>}
 		{children}
-		{rightIcon && <S.ButtonIconsWrapper>{rightIcon}</S.ButtonIconsWrapper>}
 	</S.ButtonWrapper>
 );
+
+const Button = ButtonView as typeof ButtonView & {
+	variants: typeof ButtonVariants;
+	colorVariants: typeof ButtonColorVariants;
+	Icon: typeof S.ButtonIconsWrapper;
+};
+
+Button.variants = ButtonVariants;
+Button.colorVariants = ButtonColorVariants;
+Button.Icon = S.ButtonIconsWrapper;
 
 export default Button;

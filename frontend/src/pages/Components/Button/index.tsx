@@ -18,25 +18,36 @@ const roundedVariants = [
 		isRounded: true,
 	},
 	{
-		title: <MdAlarmAdd />,
+		title: (
+			<Button.Icon>
+				<MdAlarmAdd />
+			</Button.Icon>
+		),
 	},
 	{
-		title: <MdAlarmAdd />,
+		title: (
+			<Button.Icon>
+				<MdAlarmAdd />
+			</Button.Icon>
+		),
 		isRounded: true,
 	},
 ];
 
 const propsVariants = [
 	{
-		title: "leftIcon",
+		leftIcon: <MdModeEdit />,
+	},
+	{
 		leftIcon: Children.toArray([<MdModeEdit />, <MdDelete />]),
 	},
 	{
-		title: "rightIcon",
+		rightIcon: <MdModeEdit />,
+	},
+	{
 		rightIcon: Children.toArray([<MdModeEdit />, <MdDelete />]),
 	},
 	{
-		title: "both icons",
 		leftIcon: <MdModeEdit />,
 		rightIcon: <MdModeEdit />,
 	},
@@ -52,7 +63,17 @@ const buttons = roundedVariants.reduce<ButtonProps[]>(
 		if (typeof title === "string") {
 			propsVariants.forEach((propsVariant) => {
 				prev.push({
-					children: `${title} ${propsVariant.title}`,
+					children: (
+						<>
+							{propsVariant.leftIcon && (
+								<Button.Icon>{propsVariant.leftIcon}</Button.Icon>
+							)}
+							{title}
+							{propsVariant.rightIcon && (
+								<Button.Icon>{propsVariant.rightIcon}</Button.Icon>
+							)}
+						</>
+					),
 					...restRoundedVariant,
 					...propsVariant,
 				});
@@ -77,11 +98,11 @@ const ButtonComponentsPage: FC = () => (
 	<SS.ComponentsListWrapper>
 		<h1>Buttons</h1>
 		{Children.toArray(
-			Object.keys(ButtonVariants).map((buttonVariant) => (
+			Object.keys(Button.variants).map((buttonVariant) => (
 				<SS.ComponentsListWrapper>
 					<h2>{buttonVariant}</h2>
 					{Children.toArray(
-						Object.keys(ButtonColorVariants).map((buttonColorVariant) => (
+						Object.keys(Button.colorVariants).map((buttonColorVariant) => (
 							<SS.ComponentsListWrapper>
 								<h3>{buttonColorVariant}</h3>
 								{Children.toArray(

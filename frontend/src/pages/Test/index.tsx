@@ -14,7 +14,7 @@ const Test: FC = () => {
 	const { todosLists } = useLoaderData() as TestParams;
 
 	const onTodosListClick = (todos_list: TodosList) => {
-		navigate(`${getPagePath(PageKey.test)}${todos_list.id}`);
+		navigate(`${getPagePath(PageKey.test)}/${todos_list.id}`);
 	};
 
 	return (

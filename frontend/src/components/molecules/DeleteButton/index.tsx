@@ -2,16 +2,17 @@ import { FC } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 
 import Button from "../../atoms/Button";
-import { ButtonColorVariants, ButtonVariants } from "../../atoms/Button/types";
 import { DeleteButtonProps } from "./types";
 
 const DeleteButton: FC<DeleteButtonProps> = ({ disabled = false }) => (
 	<Button
-		variant={ButtonVariants.contained}
-		colorVariant={ButtonColorVariants.error}
-		leftIcon={<MdDeleteOutline />}
+		variant={Button.variants.contained}
+		colorVariant={Button.colorVariants.error}
 		disabled={disabled}
 	>
+		<Button.Icon>
+			<MdDeleteOutline />
+		</Button.Icon>
 		Delete
 	</Button>
 );
