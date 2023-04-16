@@ -17,34 +17,25 @@ interface MarginParams {
 	x?: number | string;
 	y?: number | string;
 }
-const margin = ({ top, right, bottom, left, all, x, y }: MarginParams) =>
-	all !== undefined
-		? css`
-				margin: ${parseMargin(all)};
-		  `
-		: css`
-				${y !== undefined
-					? css`
-							margin-top: ${parseMargin(y)};
-							margin-bottom: ${parseMargin(y)};
-					  `
-					: css`
-							${top !== undefined ? `margin-top: ${parseMargin(top)};` : ""}
-							${bottom !== undefined
-								? `margin-bottom: ${parseMargin(bottom)};`
-								: ""}
-					  `}
-				${x !== undefined
-					? css`
-							margin-left: ${parseMargin(x)};
-							margin-right: ${parseMargin(x)};
-					  `
-					: css`
-							${right !== undefined
-								? `margin-right: ${parseMargin(right)};`
-								: ""}
-							${left !== undefined ? `margin-left: ${parseMargin(left)};` : ""}
-					  `}
-		  `;
+const margin = ({ top, right, bottom, left, x, y, all }: MarginParams) =>
+	css`
+		${all !== undefined ? `margin: ${parseMargin(all)};` : ""}
+		${x !== undefined
+			? `
+		margin-right: ${parseMargin(x)};
+		margin-left: ${parseMargin(x)};
+		`
+			: ""}
+		${y !== undefined
+			? `
+		margin-top: ${parseMargin(y)};
+		margin-bottom: ${parseMargin(y)};
+		`
+			: ""}
+		${top !== undefined ? `margin-top: ${parseMargin(top)};` : ""}
+		${right !== undefined ? `margin-right: ${parseMargin(right)};` : ""}
+		${bottom !== undefined ? `margin-bottom: ${parseMargin(bottom)};` : ""}
+		${left !== undefined ? `margin-left: ${parseMargin(left)};` : ""}
+	`;
 
 export default margin;

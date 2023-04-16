@@ -19,36 +19,46 @@ interface PaddingParams {
 	x?: number | string;
 	y?: number | string;
 }
-const padding = ({ top, right, bottom, left, all, x, y }: PaddingParams) =>
-	all !== undefined
-		? css`
-				padding: ${parsePadding(all)};
-		  `
-		: css`
-				${y !== undefined
-					? css`
-							padding-top: ${parsePadding(y)};
-							padding-bottom: ${parsePadding(y)};
-					  `
-					: css`
-							${top !== undefined ? `padding-top: ${parsePadding(top)};` : ""}
-							${bottom !== undefined
-								? `padding-bottom: ${parsePadding(bottom)};`
-								: ""}
-					  `}
-				${x !== undefined
-					? css`
-							padding-left: ${parsePadding(x)};
-							padding-right: ${parsePadding(x)};
-					  `
-					: css`
-							${right !== undefined
-								? `padding-right: ${parsePadding(right)};`
-								: ""}
-							${left !== undefined
-								? `padding-left: ${parsePadding(left)};`
-								: ""}
-					  `}
-		  `;
+
+const padding = ({ top, right, bottom, left, x, y, all }: PaddingParams) =>
+	css`
+		${all !== undefined
+			? css`
+					padding: ${parsePadding(all)};
+			  `
+			: ""}
+		${x !== undefined
+			? css`
+					padding-right: ${parsePadding(x)};
+					padding-left: ${parsePadding(x)};
+			  `
+			: ""}
+		${y !== undefined
+			? css`
+					padding-top: ${parsePadding(y)};
+					padding-bottom: ${parsePadding(y)};
+			  `
+			: ""}
+		${top !== undefined
+			? css`
+					padding-top: ${parsePadding(top)};
+			  `
+			: ""}
+		${right !== undefined
+			? css`
+					padding-right: ${parsePadding(right)};
+			  `
+			: ""}
+		${bottom !== undefined
+			? css`
+					padding-bottom: ${parsePadding(bottom)};
+			  `
+			: ""}
+		${left !== undefined
+			? css`
+					padding-left: ${parsePadding(left)};
+			  `
+			: ""}
+	`;
 
 export default padding;
