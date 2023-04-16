@@ -39,5 +39,3 @@ export function getPageKey(
 		}
 	}
 }
-
-console.log({ button: getPageKey("/components/button") });

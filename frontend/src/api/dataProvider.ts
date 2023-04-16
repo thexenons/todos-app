@@ -34,6 +34,7 @@ const urlFetch = async <T = unknown>(url: string, options?: Options) => {
 			...options?.headers,
 		},
 		body: body ? JSON.stringify(body) : undefined,
+		signal: options?.signal,
 	});
 	if (!response.ok) {
 		if (response.statusText === "Unauthorized") {
@@ -51,39 +52,68 @@ const urlFetch = async <T = unknown>(url: string, options?: Options) => {
 
 const getListFn = async <T = unknown>(
 	endpoint: ENDPOINT,
-	filters: Filters = {
-		limit: 20,
-		page: 1,
-	}
+	{
+		filters = {
+			limit: 20,
+			page: 1,
+		},
+		...options
+	}: Omit<Options, "method"> = {}
 ) =>
 	await urlFetch<GetList<T>>(`${API_BASE_URL}${getEndpointPath(endpoint)}`, {
 		filters,
+		...options,
 	});
 
-const getFn = async <T = unknown>(endpoint: ENDPOINT, id?: number) =>
+const getFn = async <T = unknown>(
+	endpoint: ENDPOINT,
+	id?: number,
+	options?: Omit<Options, "method">
+) =>
 	await urlFetch<T>(
-		`${API_BASE_URL}${getEndpointPath(endpoint)}${id ? `/${id}` : ""}`
+		`${API_BASE_URL}${getEndpointPath(endpoint)}${id ? `/${id}` : ""}`,
+		options
 	);
 
-const postFn = async <T = unknown>(endpoint: ENDPOINT, body: Options["body"]) =>
+const postFn = async <T = unknown>(
+	endpoint: ENDPOINT,
+	{
+		body,
+		...options
+	}: Omit<Options, "method" | "body"> & {
+		body: Options["body"];
+	}
+) =>
 	await urlFetch<T>(`${API_BASE_URL}${getEndpointPath(endpoint)}`, {
 		method: API_METHODS.POST,
 		body,
+		...options,
 	});
 
 const patchFn = async <T = unknown>(
 	endpoint: ENDPOINT,
 	id: number,
-	body: Options["body"]
+	{
+		body,
+		...options
+	}: Omit<Options, "methods" | "body"> & {
+		body: Options["body"];
+	}
 ) =>
 	await urlFetch<T>(`${API_BASE_URL}${getEndpointPath(endpoint)}/${id}`, {
 		method: API_METHODS.PATCH,
 		body,
+		...options,
 	});
 
-const deleteFn = async <T = unknown>(endpoint: ENDPOINT, id: number) =>
+const deleteFn = async <T = unknown>(
+	endpoint: ENDPOINT,
+	id: number,
+	options?: Omit<Options, "method">
+) =>
 	await urlFetch<T>(`${API_BASE_URL}${getEndpointPath(endpoint)}/${id}`, {
 		method: API_METHODS.DELETE,
+		...options,
 	});
 
 const dataProvider: {

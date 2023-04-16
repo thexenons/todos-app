@@ -32,17 +32,17 @@ export const generateEndpointFunctions = (endpoint: ENDPOINT) => {
 
 		if (method === API_METHODS.GET_LIST) {
 			returnValue.getList = <T = unknown>(filters?: Filters) =>
-				dataProvider.getList<T>(endpoint, filters);
+				dataProvider.getList<T>(endpoint, { filters });
 		}
 
 		if (method === API_METHODS.POST) {
 			returnValue.post = <T = unknown>(body: unknown) =>
-				dataProvider.post<T>(endpoint, body);
+				dataProvider.post<T>(endpoint, { body });
 		}
 
 		if (method === API_METHODS.PATCH) {
 			returnValue.patch = <T = unknown>(id: number, body: unknown) =>
-				dataProvider.patch<T>(endpoint, id, body);
+				dataProvider.patch<T>(endpoint, id, { body });
 		}
 
 		if (method === API_METHODS.DELETE) {

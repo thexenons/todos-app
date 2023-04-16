@@ -11,10 +11,13 @@ const useFetchGetList = <T = unknown>(endpoint: ENDPOINT) => {
 	const [error, setError] = useState<unknown>(null);
 
 	useEffect(() => {
+		const abortController = new AbortController();
 		const fetchData = async () => {
 			setLoading(true);
 			try {
-				const data = await dataProvider.getList<T>(endpoint);
+				const data = await dataProvider.getList<T>(endpoint, {
+					signal: abortController.signal,
+				});
 				setData(data);
 			} catch (error) {
 				setError(error);
@@ -22,6 +25,10 @@ const useFetchGetList = <T = unknown>(endpoint: ENDPOINT) => {
 			setLoading(false);
 		};
 		fetchData();
+
+		return () => {
+			abortController.abort();
+		};
 	}, [dataProvider, endpoint]);
 
 	return { data, loading, error };

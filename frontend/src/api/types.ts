@@ -15,4 +15,5 @@ export interface Options {
 	body?: unknown;
 	method?: API_METHODS;
 	headers?: HeadersInit;
+	signal?: AbortSignal;
 }
