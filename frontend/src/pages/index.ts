@@ -70,6 +70,11 @@ const pages: Pages = {
 				title: "CancelButton",
 				component: lazy(() => import("./Components/CancelButton")),
 			},
+			[PageKey.componentsPanel]: {
+				path: "/panel",
+				title: "Panel",
+				component: lazy(() => import("./Components/Panel")),
+			},
 		},
 	},
 };
