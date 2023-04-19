@@ -4,11 +4,12 @@ import { MdAdd } from "react-icons/md";
 import Button from "../../atoms/Button";
 import { CreateButtonProps } from "./types";
 
-const CreateButton: FC<CreateButtonProps> = ({ disabled = false }) => (
+const CreateButton: FC<CreateButtonProps> = ({ disabled = false, onClick }) => (
 	<Button
 		variant={Button.variants.contained}
 		colorVariant={Button.colorVariants.primary}
 		disabled={disabled}
+		onClick={onClick}
 	>
 		<Button.Icon>
 			<MdAdd />

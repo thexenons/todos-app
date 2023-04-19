@@ -50,6 +50,11 @@ const pages: Pages = {
 				title: "Button",
 				component: lazy(() => import("./Components/Button")),
 			},
+			[PageKey.componentsAcceptButton]: {
+				path: "/accept-button",
+				title: "AcceptButton",
+				component: lazy(() => import("./Components/AcceptButton")),
+			},
 			[PageKey.componentsUpdateButton]: {
 				path: "/update-button",
 				title: "UpdateButton",
@@ -74,6 +79,11 @@ const pages: Pages = {
 				path: "/panel",
 				title: "Panel",
 				component: lazy(() => import("./Components/Panel")),
+			},
+			[PageKey.componentsModal]: {
+				path: "/modal",
+				title: "Modal",
+				component: lazy(() => import("./Components/Modal")),
 			},
 		},
 	},

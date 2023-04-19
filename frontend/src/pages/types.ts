@@ -10,11 +10,13 @@ export enum PageKey {
 	test = "test",
 	components = "components",
 	componentsButton = "componentsButton",
+	componentsAcceptButton = "componentsAcceptButton",
 	componentsUpdateButton = "componentsUpdateButton",
 	componentsCreateButton = "componentsCreateButton",
 	componentsDeleteButton = "componentsDeleteButton",
 	componentsCancelButton = "componentsCancelButton",
 	componentsPanel = "componentsPanel",
+	componentsModal = "componentsModal",
 }
 export interface Page {
 	path: string;
