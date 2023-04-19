@@ -68,7 +68,7 @@ const buttonWrapperVariants: Record<
 		--button-color-main-text: ${({ theme }) =>
 			theme.colors.getContrastText(theme.colors.primary.main)};
 		--button-color-dark: ${({ theme }) => theme.colors.primary.dark};
-		--button-color-main-text: ${({ theme }) =>
+		--button-color-dark-text: ${({ theme }) =>
 			theme.colors.getContrastText(theme.colors.primary.dark)};
 	`,
 	[ButtonColorVariants.secondary]: css`
@@ -81,7 +81,7 @@ const buttonWrapperVariants: Record<
 		--button-color-main-text: ${({ theme }) =>
 			theme.colors.getContrastText(theme.colors.secondary.main)};
 		--button-color-dark: ${({ theme }) => theme.colors.secondary.dark};
-		--button-color-main-text: ${({ theme }) =>
+		--button-color-dark-text: ${({ theme }) =>
 			theme.colors.getContrastText(theme.colors.secondary.dark)};
 	`,
 	[ButtonColorVariants.neutral]: css`
@@ -94,7 +94,7 @@ const buttonWrapperVariants: Record<
 		--button-color-main-text: ${({ theme }) =>
 			theme.colors.getContrastText(theme.colors.grey.main)};
 		--button-color-dark: ${({ theme }) => theme.colors.grey.dark};
-		--button-color-main-text: ${({ theme }) =>
+		--button-color-dark-text: ${({ theme }) =>
 			theme.colors.getContrastText(theme.colors.grey.dark)};
 	`,
 	[ButtonColorVariants.error]: css`
@@ -107,7 +107,7 @@ const buttonWrapperVariants: Record<
 		--button-color-main-text: ${({ theme }) =>
 			theme.colors.getContrastText(theme.colors.error.main)};
 		--button-color-dark: ${({ theme }) => theme.colors.error.dark};
-		--button-color-main-text: ${({ theme }) =>
+		--button-color-dark-text: ${({ theme }) =>
 			theme.colors.getContrastText(theme.colors.error.dark)};
 	`,
 };
