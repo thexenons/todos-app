@@ -19,23 +19,43 @@ interface MarginParams {
 }
 const margin = ({ top, right, bottom, left, x, y, all }: MarginParams) =>
 	css`
-		${all !== undefined ? `margin: ${parseMargin(all)};` : ""}
+		${all !== undefined
+			? css`
+					margin: ${parseMargin(all)};
+			  `
+			: ""}
 		${x !== undefined
-			? `
-		margin-right: ${parseMargin(x)};
-		margin-left: ${parseMargin(x)};
-		`
+			? css`
+					margin-right: ${parseMargin(x)};
+					margin-left: ${parseMargin(x)};
+			  `
 			: ""}
 		${y !== undefined
-			? `
-		margin-top: ${parseMargin(y)};
-		margin-bottom: ${parseMargin(y)};
-		`
+			? css`
+					margin-top: ${parseMargin(y)};
+					margin-bottom: ${parseMargin(y)};
+			  `
 			: ""}
-		${top !== undefined ? `margin-top: ${parseMargin(top)};` : ""}
-		${right !== undefined ? `margin-right: ${parseMargin(right)};` : ""}
-		${bottom !== undefined ? `margin-bottom: ${parseMargin(bottom)};` : ""}
-		${left !== undefined ? `margin-left: ${parseMargin(left)};` : ""}
+		${top !== undefined
+			? css`
+					margin-top: ${parseMargin(top)};
+			  `
+			: ""}
+		${right !== undefined
+			? css`
+					margin-right: ${parseMargin(right)};
+			  `
+			: ""}
+		${bottom !== undefined
+			? css`
+					margin-bottom: ${parseMargin(bottom)};
+			  `
+			: ""}
+		${left !== undefined
+			? css`
+					margin-left: ${parseMargin(left)};
+			  `
+			: ""}
 	`;
 
 export default margin;
