@@ -60,7 +60,7 @@ const ModalCancelButton: typeof CancelButton = (props) => {
 	const { onClose, onCancel } = useModalContext();
 
 	const onClick = useCallback(() => {
-		onClose();
+		onClose?.();
 		onCancel?.();
 	}, [onCancel, onClose]);
 
@@ -70,7 +70,7 @@ const ModalAcceptButton: typeof AcceptButton = (props) => {
 	const { onClose, onAccept } = useModalContext();
 
 	const onClick = useCallback(() => {
-		onClose();
+		onClose?.();
 		onAccept?.();
 	}, [onAccept, onClose]);
 

@@ -12,4 +12,17 @@ describe("Input", () => {
 		);
 		expect(container).toMatchSnapshot();
 	});
+
+	it("should set ref", () => {
+		let inputElement: HTMLInputElement | undefined;
+		const handleRef = (ref: HTMLInputElement) => {
+			inputElement = ref;
+		};
+		render(
+			<InputTestComponent>
+				<Input name="test" ref={handleRef} />
+			</InputTestComponent>
+		);
+		expect(inputElement).not.toBeNull();
+	});
 });

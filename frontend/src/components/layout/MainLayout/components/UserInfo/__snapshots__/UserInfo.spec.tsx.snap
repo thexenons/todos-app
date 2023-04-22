@@ -13,3 +13,20 @@ exports[`UserInfo > Render 1`] = `
   </div>
 </div>
 `;
+
+exports[`UserInfo > Render with user 1`] = `
+<div>
+  <div>
+    <div>
+      <div>
+        test username
+      </div>
+      <button
+        class="styled__ButtonWrapper-sc-f8cd241f-0 bSHSQa"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -12,6 +12,37 @@ describe("Modal", () => {
 		);
 		expect(container).toMatchSnapshot();
 	});
+
+	it("Render with fullWidth", () => {
+		const { container } = render(
+			<BaseTestComponent>
+				<Modal isOpen onClose={() => null} fullWidth />
+			</BaseTestComponent>
+		);
+		expect(container).toMatchSnapshot();
+	});
+});
+
+describe("ModalHeader", () => {
+	it("Render", () => {
+		const { container } = render(
+			<BaseTestComponent>
+				<Modal.Header />
+			</BaseTestComponent>
+		);
+		expect(container).toMatchSnapshot();
+	});
+});
+
+describe("ModalFooter", () => {
+	it("Render", () => {
+		const { container } = render(
+			<BaseTestComponent>
+				<Modal.Footer />
+			</BaseTestComponent>
+		);
+		expect(container).toMatchSnapshot();
+	});
 });
 
 describe("ModalCancelButton", () => {

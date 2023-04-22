@@ -1,6 +1,7 @@
 import { act, render } from "@testing-library/react";
 import { useAtom } from "jotai";
 
+import { TEST_USER } from "../tests/constants";
 import {
 	accessTokenAtom,
 	getAccessToken,
@@ -80,20 +81,13 @@ describe("removeAccessToken", () => {
 	});
 });
 
-const testUser = {
-	id: 1,
-	email: "test email",
-	password: "test password",
-	todosLists: [],
-	username: "test username",
-};
 const TestComponentUserAtom = () => {
 	const [user, setUser] = useAtom(userAtom);
 
 	return (
 		<div>
 			<div data-testid="user">{JSON.stringify(user)}</div>
-			<button data-testid="setUser" onClick={() => setUser(testUser)}>
+			<button data-testid="setUser" onClick={() => setUser(TEST_USER)}>
 				setUser
 			</button>
 		</div>
@@ -117,16 +111,16 @@ describe("userAtom", () => {
 		});
 
 		const user = getByTestId("user");
-		expect(user.textContent).toBe(JSON.stringify(testUser));
+		expect(user.textContent).toBe(JSON.stringify(TEST_USER));
 	});
 });
 
 describe("removeUser", () => {
 	it("should remove user", () => {
-		localStorage.setItem("user", JSON.stringify(testUser));
+		localStorage.setItem("user", JSON.stringify(TEST_USER));
 
 		const user = localStorage.getItem("user");
-		expect(user).toBe(JSON.stringify(testUser));
+		expect(user).toBe(JSON.stringify(TEST_USER));
 
 		removeUser();
 

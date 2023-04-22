@@ -2,6 +2,8 @@
 
 exports[`Modal > Render 1`] = `<div />`;
 
+exports[`Modal > Render with fullWidth 1`] = `<div />`;
+
 exports[`ModalAcceptButton > Render 1`] = `
 <div>
   <button
@@ -49,5 +51,21 @@ exports[`ModalCloseButton > Render 1`] = `
       </svg>
     </span>
   </button>
+</div>
+`;
+
+exports[`ModalFooter > Render 1`] = `
+<div>
+  <div
+    class="styled__ModalFooter-sc-5dfa476c-6 bqhOQK"
+  />
+</div>
+`;
+
+exports[`ModalHeader > Render 1`] = `
+<div>
+  <div
+    class="styled__ModalHeader-sc-5dfa476c-3 jjOupZ"
+  />
 </div>
 `;
