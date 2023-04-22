@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AcceptButton > Render 1`] = `
+<div>
+  <button
+    class="styled__ButtonWrapper-sc-f8cd241f-0 bYSNlB"
+  >
+    Accept
+  </button>
+</div>
+`;

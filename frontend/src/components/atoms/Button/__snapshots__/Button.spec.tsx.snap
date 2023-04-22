@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > Render 1`] = `
+<div>
+  <button
+    class="styled__ButtonWrapper-sc-f8cd241f-0 bSHSQa"
+  />
+</div>
+`;

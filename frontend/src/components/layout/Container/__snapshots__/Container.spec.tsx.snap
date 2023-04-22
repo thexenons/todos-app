@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Container > Render 1`] = `
+<div>
+  <div
+    class="styled__ContainerWrapper-sc-d1d90ca1-0 hGYiJM"
+  />
+</div>
+`;

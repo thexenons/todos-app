@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Panel > Render 1`] = `
+<div>
+  <article
+    class="styled__PanelWrapper-sc-acb3d8f1-0 kFWmoM"
+  />
+</div>
+`;

@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ListTodos > Render 1`] = `
+<div>
+  <div>
+    <h4>
+      Todos 
+    </h4>
+    <ul />
+  </div>
+</div>
+`;

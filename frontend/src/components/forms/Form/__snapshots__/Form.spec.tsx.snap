@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Form > Render 1`] = `
+<div>
+  <form />
+</div>
+`;
