@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Modal > Render 1`] = `<div />`;
+
+exports[`ModalAcceptButton > Render 1`] = `
+<div>
+  <button
+    class="styled__ButtonWrapper-sc-f8cd241f-0 bYSNlB"
+  >
+    Accept
+  </button>
+</div>
+`;
+
+exports[`ModalCancelButton > Render 1`] = `
+<div>
+  <button
+    class="styled__ButtonWrapper-sc-f8cd241f-0 bSHSQa"
+  >
+    Cancel
+  </button>
+</div>
+`;
+
+exports[`ModalCloseButton > Render 1`] = `
+<div>
+  <button
+    class="styled__ButtonWrapper-sc-f8cd241f-0 dEVFMN styled__ModalCloseButton-sc-5dfa476c-5 dvBUPH"
+  >
+    <span
+      class="styled__ButtonIconsWrapper-sc-f8cd241f-1 ctjBQt"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+        />
+      </svg>
+    </span>
+  </button>
+</div>
+`;

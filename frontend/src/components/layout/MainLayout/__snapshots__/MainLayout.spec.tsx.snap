@@ -1,0 +1,50 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MainLayout > Render 1`] = `
+<div>
+  <aside
+    class="styled__SidebarWrapper-sc-6c82ddb3-4 kgzCTB"
+  >
+    <button
+      class="styled__ButtonWrapper-sc-f8cd241f-0 dlIeAl styled__SidebarButton-sc-6c82ddb3-0 jegNMZ"
+    >
+      <svg
+        class="styled__SidebarButtonContent-sc-6c82ddb3-1 kInmfU"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+        />
+      </svg>
+    </button>
+    <div
+      class="styled__SidebarContentWrapper-sc-6c82ddb3-2 kgXZjq"
+    >
+      <div
+        class="styled__SidebarContent-sc-6c82ddb3-3 jSXxdi"
+      >
+        <div>
+          <div>
+            <a
+              href="/login"
+            >
+              Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <main />
+</div>
+`;

@@ -9,7 +9,7 @@ export const accessTokenAtom = atomWithStorage<string | null>(
 	localStorage.getItem("accessToken")
 );
 
-export const getAccessToken = () =>
+export const getAccessToken = (): string | null =>
 	JSON.parse(localStorage.getItem("accessToken") || "null");
 
 export const removeAccessToken = () => localStorage.removeItem("accessToken");
@@ -24,5 +24,5 @@ export const removeUser = () => localStorage.removeItem("user");
 export const logout = () => {
 	removeAccessToken();
 	removeUser();
-	window.location.href = getPagePath(PageKey.login);
+	window.location.assign(getPagePath(PageKey.login));
 };

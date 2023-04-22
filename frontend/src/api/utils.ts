@@ -1,5 +1,5 @@
-import dataProvider from "./dataProvider";
 import { API_ENDPOINTS, API_METHODS, ENDPOINT } from "./endpoints";
+import { deleteFn, getFn, getListFn, patchFn, postFn } from "./functions";
 import { Filters, GetList } from "./types";
 
 export const getEndpointConfig = (endpoint: ENDPOINT) =>
@@ -26,28 +26,27 @@ export const generateEndpointFunctions = (endpoint: ENDPOINT) => {
 
 	for (const method of endpointConfig.methods) {
 		if (method === API_METHODS.GET) {
-			returnValue.get = <T = unknown>(id?: number) =>
-				dataProvider.get<T>(endpoint, id);
+			returnValue.get = <T = unknown>(id?: number) => getFn<T>(endpoint, id);
 		}
 
 		if (method === API_METHODS.GET_LIST) {
 			returnValue.getList = <T = unknown>(filters?: Filters) =>
-				dataProvider.getList<T>(endpoint, { filters });
+				getListFn<T>(endpoint, { filters });
 		}
 
 		if (method === API_METHODS.POST) {
 			returnValue.post = <T = unknown>(body: unknown) =>
-				dataProvider.post<T>(endpoint, { body });
+				postFn<T>(endpoint, { body });
 		}
 
 		if (method === API_METHODS.PATCH) {
 			returnValue.patch = <T = unknown>(id: number, body: unknown) =>
-				dataProvider.patch<T>(endpoint, id, { body });
+				patchFn<T>(endpoint, id, { body });
 		}
 
 		if (method === API_METHODS.DELETE) {
 			returnValue.delete = <T = unknown>(id: number) =>
-				dataProvider.delete<T>(endpoint, id);
+				deleteFn<T>(endpoint, id);
 		}
 	}
 

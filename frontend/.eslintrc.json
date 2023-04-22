@@ -7,7 +7,8 @@
 		"plugin:jsx-a11y/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"eslint-config-prettier",
-		"plugin:prettier/recommended"
+		"plugin:prettier/recommended",
+		"plugin:vitest/recommended"
 	],
 	"settings": {
 		"react": {
@@ -20,7 +21,7 @@
 			}
 		}
 	},
-	"plugins": ["simple-import-sort", "unused-imports"],
+	"plugins": ["vitest", "simple-import-sort", "unused-imports"],
 	"rules": {
 		"react/react-in-jsx-scope": "off",
 		"simple-import-sort/imports": "error",
