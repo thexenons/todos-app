@@ -1,6 +1,6 @@
-import { API_ENDPOINTS, API_METHODS, ENDPOINT } from "./endpoints";
+import { API_ENDPOINTS } from "../constants/api/endpoints";
+import { API_METHODS, ENDPOINT, Filters, GetList } from "../types";
 import { deleteFn, getFn, getListFn, patchFn, postFn } from "./functions";
-import { Filters, GetList } from "./types";
 
 export const getEndpointConfig = (endpoint: ENDPOINT) =>
 	API_ENDPOINTS[endpoint];

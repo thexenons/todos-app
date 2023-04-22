@@ -1,5 +1,5 @@
-import { PageKey } from "../pages";
 import { getPageKey, getPagePath } from "../router/utils";
+import { PageKey } from "../types";
 
 describe("getPagePath", () => {
 	it("should return the correct path", () => {

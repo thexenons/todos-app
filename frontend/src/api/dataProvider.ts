@@ -1,4 +1,4 @@
-import { API_METHODS } from "./endpoints";
+import { API_METHODS } from "../types";
 import {
 	deleteFn,
 	getFn,

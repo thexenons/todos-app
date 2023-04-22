@@ -6,7 +6,7 @@ import Input from "../../components/forms/inputs/Input";
 import Container from "../../components/layout/Container";
 import useDataProvider from "../../hooks/fetch/useDataProvider";
 import { getPagePath } from "../../router/utils";
-import { PageKey } from "../types";
+import { PageKey } from "../../types";
 import type { RegisterFieldValues } from "./types";
 
 const Register: FC = () => {

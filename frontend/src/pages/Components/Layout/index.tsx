@@ -3,12 +3,13 @@ import { useLocation } from "react-router-dom";
 
 import Link from "../../../components/atoms/Link";
 import Sidebar from "../../../components/layout/Sidebar";
+import { PAGES } from "../../../constants";
 import { getPageKey } from "../../../router/utils";
-import pages, { PageKey } from "../..";
+import { PageKey } from "../../../types";
 import * as S from "./styled";
 
 const componentsPages = Object.entries(
-	pages[PageKey.components]?.children || {}
+	PAGES[PageKey.components]?.children || {}
 ).map(([pageKey, page]) => ({
 	pageKey,
 	title: page.title,

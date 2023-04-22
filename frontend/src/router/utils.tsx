@@ -1,9 +1,9 @@
-import type { Page, PageKey, Pages } from "../pages";
-import pages from "../pages";
+import { PAGES } from "../constants";
+import { Page, PageKey, Pages } from "../types";
 
 export function getPagePath(
 	targetPageKey: PageKey,
-	initialPages: Pages = pages,
+	initialPages: Pages = PAGES,
 	initialPath = ""
 ): string {
 	for (const pageKey in initialPages) {
@@ -24,10 +24,10 @@ export function getPagePath(
 
 export function getPageKey(
 	targetPath: string,
-	initialPages: Pages = pages
+	initialPages: Pages = PAGES
 ): PageKey | undefined {
 	for (const pageKey in initialPages) {
-		const page = pages[pageKey as PageKey] as Page;
+		const page = PAGES[pageKey as PageKey] as Page;
 		const path = getPagePath(pageKey as PageKey);
 
 		if (path === targetPath) return pageKey as PageKey;

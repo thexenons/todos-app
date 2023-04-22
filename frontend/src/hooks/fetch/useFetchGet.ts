@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { ENDPOINT } from "../../api/endpoints";
+import { ENDPOINT } from "../../types";
 import useDataProvider from "./useDataProvider";
 
 const useFetchGet = <T = unknown>(endpoint: ENDPOINT, id: number) => {

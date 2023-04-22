@@ -2,11 +2,10 @@ import type { FC } from "react";
 import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 
 import dataProvider from "../../api/dataProvider";
-import type { TodosList } from "../../api/entities";
 import Container from "../../components/layout/Container";
 import ListTodosLists from "../../components/organisms/ListTodosLists";
 import { getPagePath } from "../../router/utils";
-import { PageKey } from "..";
+import { PageKey, TodosList } from "../../types";
 import type { TestParams } from "./types";
 
 const Test: FC = () => {

@@ -1,8 +1,8 @@
 import { useAtom, useAtomValue } from "jotai";
 import { useEffect } from "react";
 
-import { User } from "../api/entities";
 import { accessTokenAtom, userAtom } from "../state/user";
+import { User } from "../types";
 import useDataProvider from "./fetch/useDataProvider";
 
 const useUser = () => {

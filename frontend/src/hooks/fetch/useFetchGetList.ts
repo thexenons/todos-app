@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { ENDPOINT } from "../../api/endpoints";
-import { GetList } from "../../api/types";
+import { ENDPOINT, GetList } from "../../types";
 import useDataProvider from "./useDataProvider";
 
 const useFetchGetList = <T = unknown>(endpoint: ENDPOINT) => {

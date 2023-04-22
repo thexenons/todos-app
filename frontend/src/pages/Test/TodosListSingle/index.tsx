@@ -3,10 +3,9 @@ import type { LoaderFunctionArgs } from "react-router-dom";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 import dataProvider from "../../../api/dataProvider";
-import type { TodosList } from "../../../api/entities";
 import ListTodos from "../../../components/organisms/ListTodos";
 import { getPagePath } from "../../../router/utils";
-import { PageKey } from "../../types";
+import { PageKey, TodosList } from "../../../types";
 
 const TodosListSingle: FC = () => {
 	const navigate = useNavigate();

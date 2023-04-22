@@ -8,7 +8,7 @@ import Container from "../../components/layout/Container";
 import useDataProvider from "../../hooks/fetch/useDataProvider";
 import { getPagePath } from "../../router/utils";
 import { accessTokenAtom } from "../../state/user";
-import { PageKey } from "../types";
+import { PageKey } from "../../types";
 import { LoginFieldValues } from "./types";
 
 const Login: FC = () => {

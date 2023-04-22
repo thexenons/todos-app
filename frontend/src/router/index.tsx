@@ -3,8 +3,8 @@ import type { RouteObject } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "../components/layout/MainLayout";
-import type { Page, PageKey } from "../pages";
-import pages from "../pages";
+import { PAGES } from "../constants";
+import { Page, PageKey } from "../types";
 import ProtectedRoute from "./ProtectedRoute";
 import { getPagePath } from "./utils";
 
@@ -45,7 +45,7 @@ export function parsePageToRoute(
 }
 
 const router = createBrowserRouter(
-	Object.entries(pages).map(([key, page]) =>
+	Object.entries(PAGES).map(([key, page]) =>
 		parsePageToRoute(key as PageKey, page)
 	)
 );

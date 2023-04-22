@@ -1,10 +1,8 @@
 import { vi } from "vitest";
 
-import { PageKey } from "../pages";
 import { getPagePath } from "../router/utils";
+import { API_METHODS, ENDPOINT, GetList, PageKey } from "../types";
 import dataProvider from "./dataProvider";
-import { API_METHODS, ENDPOINT } from "./endpoints";
-import { GetList } from "./types";
 
 describe("dataProvider", () => {
 	afterEach(() => {
