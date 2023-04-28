@@ -12,6 +12,7 @@
 		"format": "prettier --write .",
 		"type-check": "tsc --noEmit",
 		"test": "vitest",
+		"test:watch": "yarn test --watch",
 		"test:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
@@ -44,6 +45,7 @@
 		"@swc/plugin-styled-components": "^1.5.48",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^14.0.0",
+		"@testing-library/user-event": "^14.4.3",
 		"@types/deepmerge": "^2.2.0",
 		"@types/react": "^18.0.28",
 		"@types/react-dom": "^18.0.11",
