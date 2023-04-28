@@ -8,6 +8,7 @@ import type { ModalProps } from "../types";
 function createWrapperAndAppendToBody(wrapperId: string) {
 	const wrapperElement = document.createElement("div");
 	wrapperElement.setAttribute("id", wrapperId);
+	wrapperElement.setAttribute("data-testid", wrapperId);
 	document.body.appendChild(wrapperElement);
 	return wrapperElement;
 }
@@ -39,18 +40,6 @@ const useModal = ({
 			setLocked(true);
 			setOpenModals((prev) => prev + 1);
 			openModalLock.current = true;
-		} else if (!isOpen && openModalLock.current) {
-			setLocked(false);
-			setOpenModals((prev) => {
-				const newOpenModals = prev - 1;
-
-				if (newOpenModals === 0) {
-					setLocked(false);
-				}
-
-				return newOpenModals;
-			});
-			openModalLock.current = false;
 		}
 
 		return () => {
