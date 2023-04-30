@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputTestComponent > Render 1`] = `
+<div>
+  <form />
+</div>
+`;
