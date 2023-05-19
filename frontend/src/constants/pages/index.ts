@@ -84,6 +84,11 @@ export const PAGES: Pages = {
 				title: "Modal",
 				component: lazy(() => import("../../pages/Components/Modal")),
 			},
+			[PageKey.componentsFloatingPanel]: {
+				path: "/floating-panel",
+				title: "FloatingPanel",
+				component: lazy(() => import("../../pages/Components/FloatingPanel")),
+			},
 		},
 	},
 };

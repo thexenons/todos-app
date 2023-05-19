@@ -17,6 +17,7 @@ export enum PageKey {
 	componentsCancelButton = "componentsCancelButton",
 	componentsPanel = "componentsPanel",
 	componentsModal = "componentsModal",
+	componentsFloatingPanel = "componentsFloatingPanel",
 }
 export interface Page {
 	path: string;

@@ -11,7 +11,7 @@ export const ModalBackdrop = styled.div`
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 100;
+	z-index: ${({ theme }) => theme.zIndex.modal};
 `;
 
 export const ModalWrapper = styled.div<{
@@ -22,10 +22,14 @@ export const ModalWrapper = styled.div<{
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 100;
+	z-index: ${({ theme }) => theme.zIndex.modal};
 	color: ${({ theme }) => theme.colors.text.primary};
 	background-color: ${({ theme }) => theme.colors.background.paper};
 	${({ theme }) => theme.mixins.flex({ direction: "column" })}
+	box-shadow: ${({ theme }) =>
+		`${theme.spacing(0.5)} ${theme.spacing(1)} ${theme.spacing(
+			3
+		)} rgba(0,0,0,0.4)`};
 
 	${({ $fullWidth }) =>
 		$fullWidth &&

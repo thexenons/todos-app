@@ -6,7 +6,7 @@ import ComponentsLayout from "./Layout";
 
 const Components: FC = () => (
 	<ComponentsLayout>
-		<Container>
+		<Container fullHeight>
 			<Suspense fallback={<div>Loading...</div>}>
 				<Outlet />
 			</Suspense>

@@ -39,8 +39,6 @@ export const SidebarWrapper = styled.aside<{
 	$isOpen: boolean;
 	$height: number;
 }>`
-	position: relative;
-	z-index: 2;
 	${({ theme }) => theme.mixins.flex({ direction: "column" })}
 	background-color: ${({ theme }) => theme.colors.background.paper};
 	color: ${({ theme }) => theme.colors.text.primary};

@@ -21,8 +21,6 @@ const GlobalStyles = createGlobalStyle`
         min-height: 100vh;
 
         main {
-            position: relative;
-            z-index: 1;
             flex: 1 1 auto;
             background-color: ${({ theme }) => theme.colors.background.default};
             color: ${({ theme }) => theme.colors.text.primary};
