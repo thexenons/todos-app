@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputBase > Render 1`] = `
+<div>
+  <div
+    class="styled__InputWrapper-sc-f06926e2-2 bMkOPf"
+  >
+    <input
+      class="styled__InputElement-sc-f06926e2-1 ekMEKq"
+      data-has-placeholder="true"
+      id="test-id"
+      name="test-name"
+      placeholder="test-placeholder"
+      type="text"
+      value="test-value"
+    />
+    <label
+      class="styled__InputLabel-sc-f06926e2-0 eomqRx"
+      for="test-id"
+    >
+      test-label
+    </label>
+  </div>
+</div>
+`;

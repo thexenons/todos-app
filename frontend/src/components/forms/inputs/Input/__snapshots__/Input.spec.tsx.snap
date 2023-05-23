@@ -4,17 +4,20 @@ exports[`Input > Render 1`] = `
 <div>
   <form>
     <div
-      class="styled__InputWrapper-sc-cf5ad15e-0"
+      class="styled__InputWrapper-sc-f06926e2-2 bMkOPf"
     >
-      <label
-        class="styled__InputLabel-sc-cf5ad15e-1"
-        for=":r0:"
-      />
       <input
-        class="styled__InputElement-sc-cf5ad15e-2"
+        class="styled__InputElement-sc-f06926e2-1 ekMEKq"
+        data-has-placeholder="false"
         id=":r0:"
         name="test"
+        placeholder=" "
+        type="text"
         value=""
+      />
+      <label
+        class="styled__InputLabel-sc-f06926e2-0 eomqRx"
+        for=":r0:"
       />
     </div>
   </form>

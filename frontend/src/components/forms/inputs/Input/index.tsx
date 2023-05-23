@@ -1,22 +1,8 @@
-import { forwardRef, useId } from "react";
+import { forwardRef } from "react";
 import { useController, useFormContext } from "react-hook-form";
 
-import * as S from "./styled";
-import type { InputBaseProps, InputProps } from "./types";
-
-export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
-	({ label = "", ...rest }, ref) => {
-		const id = useId();
-
-		return (
-			<S.InputWrapper>
-				<S.InputLabel htmlFor={rest.id || id}>{label}</S.InputLabel>
-				<S.InputElement {...rest} id={rest.id || id} ref={ref} />
-			</S.InputWrapper>
-		);
-	}
-);
-InputBase.displayName = "InputBase";
+import InputBase from "../InputBase";
+import type { InputProps } from "./types";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
 	({ rules, name, ...rest }, ref) => {

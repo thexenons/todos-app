@@ -89,6 +89,11 @@ export const PAGES: Pages = {
 				title: "FloatingPanel",
 				component: lazy(() => import("../../pages/Components/FloatingPanel")),
 			},
+			[PageKey.componentsInputBase]: {
+				path: "/input-base",
+				title: "InputBase",
+				component: lazy(() => import("../../pages/Components/InputBase")),
+			},
 		},
 	},
 };

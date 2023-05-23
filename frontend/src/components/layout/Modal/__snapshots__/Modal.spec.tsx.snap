@@ -27,7 +27,7 @@ exports[`ModalCancelButton > Render 1`] = `
 exports[`ModalCloseButton > Render 1`] = `
 <div>
   <button
-    class="styled__ButtonWrapper-sc-f8cd241f-0 dEVFMN styled__ModalCloseButton-sc-5dfa476c-5 dvBUPH"
+    class="styled__ButtonWrapper-sc-f8cd241f-0 dEVFMN styled__ModalCloseButton-sc-e153164f-5 iHydEQ"
   >
     <span
       class="styled__ButtonIconsWrapper-sc-f8cd241f-1 ctjBQt"
@@ -57,7 +57,7 @@ exports[`ModalCloseButton > Render 1`] = `
 exports[`ModalFooter > Render 1`] = `
 <div>
   <div
-    class="styled__ModalFooter-sc-5dfa476c-6 bqhOQK"
+    class="styled__ModalFooter-sc-e153164f-6 iKOHul"
   />
 </div>
 `;
@@ -65,7 +65,7 @@ exports[`ModalFooter > Render 1`] = `
 exports[`ModalHeader > Render 1`] = `
 <div>
   <div
-    class="styled__ModalHeader-sc-5dfa476c-3 jjOupZ"
+    class="styled__ModalHeader-sc-e153164f-3 PGVZS"
   />
 </div>
 `;
