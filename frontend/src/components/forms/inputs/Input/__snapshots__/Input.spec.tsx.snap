@@ -4,10 +4,11 @@ exports[`Input > Render 1`] = `
 <div>
   <form>
     <div
-      class="styled__InputWrapper-sc-f06926e2-2 bMkOPf"
+      class="styled__InputWrapper-sc-df44bad-2 eeYxWP"
+      data-has-error="false"
     >
       <input
-        class="styled__InputElement-sc-f06926e2-1 ekMEKq"
+        class="styled__InputElement-sc-df44bad-1 hxprTC"
         data-has-placeholder="false"
         id=":r0:"
         name="test"
@@ -16,7 +17,7 @@ exports[`Input > Render 1`] = `
         value=""
       />
       <label
-        class="styled__InputLabel-sc-f06926e2-0 eomqRx"
+        class="styled__InputLabel-sc-df44bad-0 iXecGC"
         for=":r0:"
       />
     </div>

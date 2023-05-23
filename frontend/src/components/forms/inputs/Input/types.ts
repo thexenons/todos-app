@@ -1,9 +1,6 @@
-import type { InputHTMLAttributes } from "react";
 import { FieldValues, RegisterOptions } from "react-hook-form";
 
-export interface InputBaseProps extends InputHTMLAttributes<HTMLInputElement> {
-	label?: string;
-}
+import { InputBaseProps } from "../InputBase/types";
 
 export interface InputProps extends InputBaseProps {
 	name: string;

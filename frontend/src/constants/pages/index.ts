@@ -94,6 +94,11 @@ export const PAGES: Pages = {
 				title: "InputBase",
 				component: lazy(() => import("../../pages/Components/InputBase")),
 			},
+			[PageKey.componentsInputs]: {
+				path: "/inputs",
+				title: "Inputs",
+				component: lazy(() => import("../../pages/Components/Inputs")),
+			},
 		},
 	},
 };

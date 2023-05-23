@@ -5,13 +5,13 @@ import InputBase from "../InputBase";
 import type { InputProps } from "./types";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-	({ rules, name, ...rest }, ref) => {
+	({ rules, name, defaultValue, defaultChecked, ...rest }, ref) => {
 		const { control } = useFormContext();
 		const { field } = useController({
 			name,
 			control,
 			rules,
-			defaultValue: rest.value || "",
+			defaultValue: rest.value ?? defaultValue ?? defaultChecked,
 		});
 		const handleRef = (inputRef: HTMLInputElement) => {
 			field.ref(inputRef);
