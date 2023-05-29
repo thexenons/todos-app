@@ -3,10 +3,10 @@
 exports[`UpdateButton > Render 1`] = `
 <div>
   <button
-    class="styled__ButtonWrapper-sc-f8cd241f-0 bYSNlB"
+    class="styled__ButtonWrapper-sc-1fzdj0n-0 coECpw"
   >
     <span
-      class="styled__ButtonIconsWrapper-sc-f8cd241f-1 ctjBQt"
+      class="styled__ButtonIconsWrapper-sc-1fzdj0n-1 hTTCzA"
     >
       <svg
         fill="currentColor"

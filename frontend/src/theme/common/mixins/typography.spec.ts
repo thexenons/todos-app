@@ -4,7 +4,9 @@ describe("typography", () => {
 	it("should return theme function", () => {
 		const result = typography("h1").toString();
 		expect(result).toContain(
-			",({ theme  })=>theme.typography.getTypographyStyle(theme.typography[variant]),"
+			"({\n" +
+				"  theme\n" +
+				"}) => theme.typography.getTypographyStyle(theme.typography[variant])"
 		);
 	});
 });
