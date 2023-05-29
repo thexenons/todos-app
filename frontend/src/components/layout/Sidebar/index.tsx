@@ -2,8 +2,8 @@ import { useAtom } from "jotai";
 import { FC, useCallback } from "react";
 import { useElementSize } from "usehooks-ts";
 
-import { sidebarIsOpenAtom } from "../../../state/ui";
 import { ButtonColorVariants, ButtonVariants } from "../../atoms/Button/types";
+import { sidebarIsOpenAtom } from "./state";
 import * as S from "./styled";
 import type { SidebarProps } from "./types";
 

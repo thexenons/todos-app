@@ -2,7 +2,7 @@ import { useSetAtom } from "jotai";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLockedBody } from "usehooks-ts";
 
-import { openModalsAtom } from "../../../../state/ui";
+import { openedModalsAtom } from "../state";
 import type { ModalProps } from "../types";
 
 function createWrapperAndAppendToBody(wrapperId: string) {
@@ -17,7 +17,7 @@ const useModal = ({
 	isOpen,
 	wrapperId = "react-portal-wrapper",
 }: Pick<ModalProps, "wrapperId" | "isOpen">) => {
-	const setOpenModals = useSetAtom(openModalsAtom);
+	const setOpenModals = useSetAtom(openedModalsAtom);
 	const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(
 		null
 	);
