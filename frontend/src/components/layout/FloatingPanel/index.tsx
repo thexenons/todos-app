@@ -1,106 +1,142 @@
 import {
-	FC,
+	forwardRef,
 	KeyboardEventHandler,
 	MouseEventHandler,
 	TouchEventHandler,
+	useEffect,
 	useImperativeHandle,
+	useLayoutEffect,
 	useRef,
 	useState,
 } from "react";
 import { usePopper } from "react-popper";
-import { useBoolean, useOnClickOutside } from "usehooks-ts";
+import { useBoolean, useElementSize, useOnClickOutside } from "usehooks-ts";
 
 import * as S from "./styled";
 import { FloatingPanelProps } from "./types";
 
-const FloatingPanel: FC<FloatingPanelProps> = ({
-	content,
-	placement = "bottom",
-	strategy = "hover",
-	children,
-}) => {
-	const [referenceElement, setReferenceElement] =
-		useState<HTMLDivElement | null>(null);
+const FloatingPanel = forwardRef<HTMLDivElement, FloatingPanelProps>(
+	(
+		{
+			content,
+			placement = "bottom",
+			strategy = "hover",
+			isOpen,
+			className = "",
+			children,
+		},
+		ref
+	) => {
+		const [referenceElement, setReferenceElement] =
+			useState<HTMLDivElement | null>(null);
 
-	const popperRef = useRef<HTMLDivElement | null>(null);
-	const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
-		null
-	);
-	useImperativeHandle<HTMLDivElement | null, HTMLDivElement | null>(
-		popperRef,
-		() => popperElement
-	);
+		const [setRef, size] = useElementSize();
 
-	const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null);
-	const { styles, attributes } = usePopper(referenceElement, popperElement, {
-		modifiers: [{ name: "arrow", options: { element: arrowElement } }],
-		placement,
-	});
+		useLayoutEffect(() => {
+			if (referenceElement) setRef(referenceElement);
+		}, [ref, referenceElement, setRef]);
 
-	const {
-		value: mustShowTooltip,
-		setFalse: hideTooltip,
-		setTrue: showTooltip,
-		toggle: toggleTooltip,
-	} = useBoolean(strategy === "fixed");
+		const popperRef = useRef<HTMLDivElement | null>(null);
+		const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
+			null
+		);
+		useImperativeHandle<HTMLDivElement | null, HTMLDivElement | null>(
+			popperRef,
+			() => popperElement
+		);
+		useImperativeHandle<HTMLDivElement | null, HTMLDivElement | null>(
+			ref,
+			() => popperRef.current
+		);
 
-	useOnClickOutside(popperRef, (e) => {
-		if (
-			(!e.target || !referenceElement?.contains(e.target as Node)) &&
-			strategy === "click"
-		) {
-			hideTooltip();
-		}
-	});
+		const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(
+			null
+		);
+		const { styles, attributes } = usePopper(referenceElement, popperElement, {
+			modifiers: [{ name: "arrow", options: { element: arrowElement } }],
+			placement,
+		});
 
-	const handleMouseEnter: MouseEventHandler<HTMLDivElement> = () => {
-		if (strategy === "hover") showTooltip();
-	};
+		const {
+			value: mustShowTooltip,
+			setFalse: hideTooltip,
+			setTrue: showTooltip,
+			toggle: toggleTooltip,
+			setValue,
+		} = useBoolean(isOpen ?? strategy === "fixed");
 
-	const handleMouseLeave: MouseEventHandler<HTMLDivElement> = () => {
-		if (strategy === "hover") hideTooltip();
-	};
+		useEffect(() => {
+			if (isOpen !== undefined) setValue(isOpen);
+		}, [isOpen, setValue]);
 
-	const handleTouchStart: TouchEventHandler<HTMLDivElement> = () => {
-		if (strategy === "hover" || strategy === "click") showTooltip();
-	};
+		useOnClickOutside(popperRef, (e) => {
+			if (isOpen !== undefined) return;
 
-	const handleClick: MouseEventHandler<HTMLDivElement> = () => {
-		if (strategy === "click") {
-			showTooltip();
-		}
-	};
+			if (
+				(!e.target || !referenceElement?.contains(e.target as Node)) &&
+				strategy === "click"
+			) {
+				hideTooltip();
+			}
+		});
 
-	const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
-		if (e.key === "Enter" && strategy === "click") toggleTooltip();
-	};
+		const handleMouseEnter: MouseEventHandler<HTMLDivElement> = () => {
+			if (isOpen !== undefined) return;
+			if (strategy === "hover") showTooltip();
+		};
 
-	return (
-		<>
-			<div
-				ref={setReferenceElement}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
-				onTouchStart={handleTouchStart}
-				onClick={handleClick}
-				onKeyDown={handleKeyDown}
-				role="button"
-				tabIndex={0}
-			>
-				{children}
-			</div>
-			{content && mustShowTooltip && (
-				<S.FloatingPanelWrapper
-					ref={setPopperElement}
-					style={styles.popper}
-					{...attributes.popper}
+		const handleMouseLeave: MouseEventHandler<HTMLDivElement> = () => {
+			if (isOpen !== undefined) return;
+			if (strategy === "hover") hideTooltip();
+		};
+
+		const handleTouchStart: TouchEventHandler<HTMLDivElement> = () => {
+			if (isOpen !== undefined) return;
+			if (strategy === "hover" || strategy === "click") showTooltip();
+		};
+
+		const handleClick: MouseEventHandler<HTMLDivElement> = () => {
+			if (isOpen !== undefined) return;
+			if (strategy === "click") {
+				showTooltip();
+			}
+		};
+
+		const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
+			if (isOpen !== undefined) return;
+			if (e.key === "Enter" && strategy === "click") toggleTooltip();
+		};
+
+		return (
+			<>
+				<div
+					ref={setReferenceElement}
+					onMouseEnter={handleMouseEnter}
+					onMouseLeave={handleMouseLeave}
+					onTouchStart={handleTouchStart}
+					onClick={handleClick}
+					onKeyDown={handleKeyDown}
+					role="button"
+					tabIndex={0}
 				>
-					<S.FloatingPanelArrow ref={setArrowElement} style={styles.arrow} />
-					<S.FloatingPanelContent>{content}</S.FloatingPanelContent>
-				</S.FloatingPanelWrapper>
-			)}
-		</>
-	);
-};
+					{children}
+				</div>
+				{content && mustShowTooltip && (
+					<S.FloatingPanelWrapper
+						ref={setPopperElement}
+						style={{ ...styles.popper, minWidth: size.width }}
+						className={className}
+						{...attributes.popper}
+					>
+						<S.FloatingPanelArrow ref={setArrowElement} style={styles.arrow} />
+						<S.FloatingPanelContent>{content}</S.FloatingPanelContent>
+					</S.FloatingPanelWrapper>
+				)}
+			</>
+		);
+	}
+);
+
+FloatingPanel.displayName = "FloatingPanel";
 
 export default FloatingPanel;

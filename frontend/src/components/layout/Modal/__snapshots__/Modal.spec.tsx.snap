@@ -7,7 +7,7 @@ exports[`Modal > Render with fullWidth 1`] = `<div />`;
 exports[`ModalAcceptButton > Render 1`] = `
 <div>
   <button
-    class="styled__ButtonWrapper-sc-1fzdj0n-0 coECpw"
+    class="styled__ButtonWrapper-sc-1fzdj0n-0 iJycA-D"
   >
     Accept
   </button>
@@ -17,7 +17,7 @@ exports[`ModalAcceptButton > Render 1`] = `
 exports[`ModalCancelButton > Render 1`] = `
 <div>
   <button
-    class="styled__ButtonWrapper-sc-1fzdj0n-0 emfCFH"
+    class="styled__ButtonWrapper-sc-1fzdj0n-0 fgaVpy"
   >
     Cancel
   </button>
@@ -27,10 +27,10 @@ exports[`ModalCancelButton > Render 1`] = `
 exports[`ModalCloseButton > Render 1`] = `
 <div>
   <button
-    class="styled__ButtonWrapper-sc-1fzdj0n-0 fCcpkY styled__ModalCloseButton-sc-9ggyja-5 eDWGAM"
+    class="styled__ButtonWrapper-sc-1fzdj0n-0 hDfMwb styled__ModalCloseButton-sc-9ggyja-5 khBFEX"
   >
     <span
-      class="styled__ButtonIconsWrapper-sc-1fzdj0n-1 hTTCzA"
+      class="styled__ButtonIconsWrapper-sc-1fzdj0n-1 iwTLph"
     >
       <svg
         fill="currentColor"
@@ -57,7 +57,7 @@ exports[`ModalCloseButton > Render 1`] = `
 exports[`ModalFooter > Render 1`] = `
 <div>
   <div
-    class="styled__ModalFooter-sc-9ggyja-6 cecdHp"
+    class="styled__ModalFooter-sc-9ggyja-6 lfHAzc"
   />
 </div>
 `;
@@ -65,7 +65,7 @@ exports[`ModalFooter > Render 1`] = `
 exports[`ModalHeader > Render 1`] = `
 <div>
   <div
-    class="styled__ModalHeader-sc-9ggyja-3 iFCrAO"
+    class="styled__ModalHeader-sc-9ggyja-3 hcBvRb"
   />
 </div>
 `;

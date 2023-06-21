@@ -6,6 +6,7 @@ import DateInput from "../../../components/forms/inputs/DateInput";
 import EmailInput from "../../../components/forms/inputs/EmailInput";
 import NumberInput from "../../../components/forms/inputs/NumberInput";
 import PasswordInput from "../../../components/forms/inputs/PasswordInput";
+import SelectInput from "../../../components/forms/inputs/SelectInput";
 import TextInput from "../../../components/forms/inputs/TextInput";
 import * as SS from "../styled";
 
@@ -86,6 +87,53 @@ const InputsComponenstPage: FC = () => (
 						name="text-input-2"
 					/>
 					<TextInput label="test-label" name="text-input-3" hasError />
+				</SS.ComponentsRowWrapper>
+				<h3>SelectInput</h3>
+				<SS.ComponentsRowWrapper>
+					<SelectInput
+						label="test-label"
+						name="select-input-1"
+						choices={[
+							{
+								value: 1,
+								label: "Opción 1",
+							},
+							{
+								value: 2,
+								label: "Opción 2",
+							},
+						]}
+					/>
+					{/* <SelectInput
+						label="test-label"
+						defaultValue="test-default-value"
+						name="select-input-2"
+						choices={[
+							{
+								value: 1,
+								label: "Opción 1",
+							},
+							{
+								value: 2,
+								label: "Opción 2",
+							},
+						]}
+					/>
+					<SelectInput
+						label="test-label"
+						name="select-input-3"
+						choices={[
+							{
+								value: 1,
+								label: "Opción 1",
+							},
+							{
+								value: 2,
+								label: "Opción 2",
+							},
+						]}
+						hasError
+					/> */}
 				</SS.ComponentsRowWrapper>
 			</SS.ComponentsListWrapper>
 		</Form>

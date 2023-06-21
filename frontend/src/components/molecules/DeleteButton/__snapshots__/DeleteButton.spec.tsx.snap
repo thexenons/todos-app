@@ -3,10 +3,10 @@
 exports[`DeleteButton > Render 1`] = `
 <div>
   <button
-    class="styled__ButtonWrapper-sc-1fzdj0n-0 gBFYSY"
+    class="styled__ButtonWrapper-sc-1fzdj0n-0 jhkPPx"
   >
     <span
-      class="styled__ButtonIconsWrapper-sc-1fzdj0n-1 hTTCzA"
+      class="styled__ButtonIconsWrapper-sc-1fzdj0n-1 iwTLph"
     >
       <svg
         fill="currentColor"

@@ -5,4 +5,6 @@ export interface FloatingPanelProps extends PropsWithChildren {
 	content?: ReactNode;
 	placement?: Placement;
 	strategy?: "fixed" | "hover" | "click";
+	isOpen?: boolean;
+	className?: string;
 }

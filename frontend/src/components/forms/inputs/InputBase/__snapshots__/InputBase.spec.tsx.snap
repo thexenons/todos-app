@@ -3,11 +3,11 @@
 exports[`InputBase > Render 1`] = `
 <div>
   <div
-    class="styled__InputWrapper-sc-8zf6s0-2 hRwcNE"
+    class="styled__InputWrapper-sc-8zf6s0-2 iKmMVX"
     data-has-error="false"
   >
     <input
-      class="styled__InputElement-sc-8zf6s0-1 gwaAnb"
+      class="styled__InputElement-sc-8zf6s0-1 kBsvAW"
       data-has-placeholder="true"
       id="test-id"
       name="test-name"
@@ -16,7 +16,7 @@ exports[`InputBase > Render 1`] = `
       value="test-value"
     />
     <label
-      class="styled__InputLabel-sc-8zf6s0-0 haoixd"
+      class="styled__InputLabel-sc-8zf6s0-0 kSURlg"
       for="test-id"
     >
       test-label

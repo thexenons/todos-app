@@ -3,7 +3,7 @@
 exports[`CancelButton > Render 1`] = `
 <div>
   <button
-    class="styled__ButtonWrapper-sc-1fzdj0n-0 emfCFH"
+    class="styled__ButtonWrapper-sc-1fzdj0n-0 fgaVpy"
   >
     Cancel
   </button>

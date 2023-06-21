@@ -3,13 +3,13 @@
 exports[`Sidebar > Force isOpen false 1`] = `
 <div>
   <aside
-    class="styled__SidebarWrapper-sc-12bdvz6-4 bWJaWK"
+    class="styled__SidebarWrapper-sc-12bdvz6-4 dknLTb"
   >
     <button
-      class="styled__ButtonWrapper-sc-1fzdj0n-0 eOsogE styled__SidebarButton-sc-12bdvz6-0 bZZcHx"
+      class="styled__ButtonWrapper-sc-1fzdj0n-0 gnWbsF styled__SidebarButton-sc-12bdvz6-0 eGMTRw"
     >
       <svg
-        class="styled__SidebarButtonContent-sc-12bdvz6-1 izHQiW"
+        class="styled__SidebarButtonContent-sc-12bdvz6-1 jQJmfF"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -28,10 +28,10 @@ exports[`Sidebar > Force isOpen false 1`] = `
       </svg>
     </button>
     <div
-      class="styled__SidebarContentWrapper-sc-12bdvz6-2 bHfPHX"
+      class="styled__SidebarContentWrapper-sc-12bdvz6-2 GAJIw"
     >
       <div
-        class="styled__SidebarContent-sc-12bdvz6-3 fdkyMA"
+        class="styled__SidebarContent-sc-12bdvz6-3 hcfyuD"
       />
     </div>
   </aside>
@@ -41,13 +41,13 @@ exports[`Sidebar > Force isOpen false 1`] = `
 exports[`Sidebar > Force isOpen true 1`] = `
 <div>
   <aside
-    class="styled__SidebarWrapper-sc-12bdvz6-4 ccWulI"
+    class="styled__SidebarWrapper-sc-12bdvz6-4 cmAXsJ"
   >
     <button
-      class="styled__ButtonWrapper-sc-1fzdj0n-0 eOsogE styled__SidebarButton-sc-12bdvz6-0 bZZcHx"
+      class="styled__ButtonWrapper-sc-1fzdj0n-0 gnWbsF styled__SidebarButton-sc-12bdvz6-0 eGMTRw"
     >
       <svg
-        class="styled__SidebarButtonContent-sc-12bdvz6-1 izHQiW"
+        class="styled__SidebarButtonContent-sc-12bdvz6-1 jQJmfF"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -66,10 +66,10 @@ exports[`Sidebar > Force isOpen true 1`] = `
       </svg>
     </button>
     <div
-      class="styled__SidebarContentWrapper-sc-12bdvz6-2 bHfPHX"
+      class="styled__SidebarContentWrapper-sc-12bdvz6-2 GAJIw"
     >
       <div
-        class="styled__SidebarContent-sc-12bdvz6-3 fdkyMA"
+        class="styled__SidebarContent-sc-12bdvz6-3 hcfyuD"
       />
     </div>
   </aside>
@@ -79,13 +79,13 @@ exports[`Sidebar > Force isOpen true 1`] = `
 exports[`Sidebar > Render 1`] = `
 <div>
   <aside
-    class="styled__SidebarWrapper-sc-12bdvz6-4 ccWulI"
+    class="styled__SidebarWrapper-sc-12bdvz6-4 cmAXsJ"
   >
     <button
-      class="styled__ButtonWrapper-sc-1fzdj0n-0 eOsogE styled__SidebarButton-sc-12bdvz6-0 bZZcHx"
+      class="styled__ButtonWrapper-sc-1fzdj0n-0 gnWbsF styled__SidebarButton-sc-12bdvz6-0 eGMTRw"
     >
       <svg
-        class="styled__SidebarButtonContent-sc-12bdvz6-1 izHQiW"
+        class="styled__SidebarButtonContent-sc-12bdvz6-1 jQJmfF"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -104,10 +104,10 @@ exports[`Sidebar > Render 1`] = `
       </svg>
     </button>
     <div
-      class="styled__SidebarContentWrapper-sc-12bdvz6-2 bHfPHX"
+      class="styled__SidebarContentWrapper-sc-12bdvz6-2 GAJIw"
     >
       <div
-        class="styled__SidebarContent-sc-12bdvz6-3 fdkyMA"
+        class="styled__SidebarContent-sc-12bdvz6-3 hcfyuD"
       />
     </div>
   </aside>
