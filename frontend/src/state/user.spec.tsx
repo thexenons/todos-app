@@ -1,4 +1,4 @@
-import { act, render } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { useAtom } from "jotai";
 
 import { TEST_USER } from "../tests/constants";
@@ -34,21 +34,21 @@ beforeEach(() => {
 
 describe("accessTokenAtom", () => {
 	it("should have empty default value", () => {
-		const { getByTestId } = render(<TestComponentAccessToken />);
+		render(<TestComponentAccessToken />);
 
-		const accessToken = getByTestId("accessToken");
+		const accessToken = screen.getByTestId("accessToken");
 		expect(accessToken.textContent).toBe("");
 	});
 
 	it("should set value", () => {
-		const { getByTestId } = render(<TestComponentAccessToken />);
+		render(<TestComponentAccessToken />);
 
-		const setAccessToken = getByTestId("setAccessToken");
+		const setAccessToken = screen.getByTestId("setAccessToken");
 		act(() => {
 			setAccessToken.click();
 		});
 
-		const accessToken = getByTestId("accessToken");
+		const accessToken = screen.getByTestId("accessToken");
 		expect(accessToken.textContent).toBe("test");
 	});
 });
@@ -96,21 +96,21 @@ const TestComponentUserAtom = () => {
 
 describe("userAtom", () => {
 	it("should have empty default value", () => {
-		const { getByTestId } = render(<TestComponentUserAtom />);
+		render(<TestComponentUserAtom />);
 
-		const user = getByTestId("user");
+		const user = screen.getByTestId("user");
 		expect(user.textContent).toBe("null");
 	});
 
 	it("should set value", () => {
-		const { getByTestId } = render(<TestComponentUserAtom />);
+		render(<TestComponentUserAtom />);
 
-		const setUser = getByTestId("setUser");
+		const setUser = screen.getByTestId("setUser");
 		act(() => {
 			setUser.click();
 		});
 
-		const user = getByTestId("user");
+		const user = screen.getByTestId("user");
 		expect(user.textContent).toBe(JSON.stringify(TEST_USER));
 	});
 });

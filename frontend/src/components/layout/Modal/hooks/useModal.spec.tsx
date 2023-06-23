@@ -25,9 +25,10 @@ describe("useModal", () => {
 		it("default", async () => {
 			renderHook(useModal, { initialProps: { isOpen: true } });
 
-			await waitFor(() =>
-				expect(screen.getByTestId("react-portal-wrapper")).toBeInTheDocument()
+			const reactPortalWrapper = await screen.findByTestId(
+				"react-portal-wrapper"
 			);
+			expect(reactPortalWrapper).toBeInTheDocument();
 		});
 
 		it("custom", async () => {
@@ -35,13 +36,12 @@ describe("useModal", () => {
 				initialProps: { isOpen: true, wrapperId: "test-wrapper-id" },
 			});
 
-			await waitFor(() =>
-				expect(screen.getByTestId("test-wrapper-id")).toBeInTheDocument()
-			);
+			const testWrapper = await screen.findByTestId("test-wrapper-id");
+			expect(testWrapper).toBeInTheDocument();
 		});
 	});
 
-	it.only("open and close", async () => {
+	it("open and close", async () => {
 		const { rerender } = renderHook(useModal, {
 			initialProps: { isOpen: false },
 		});

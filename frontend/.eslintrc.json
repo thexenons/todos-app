@@ -1,4 +1,5 @@
 {
+	"root": true,
 	"extends": [
 		"eslint:recommended",
 		"plugin:react/recommended",
@@ -14,10 +15,13 @@
 		"react": {
 			"version": "detect"
 		},
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts", ".tsx"]
+		},
 		"import/resolver": {
-			"node": {
-				"paths": ["src"],
-				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			"typescript": {
+				"alwaysTryTypes": true,
+				"directory": "tsconfig.eslint.json"
 			}
 		}
 	},
@@ -27,5 +31,14 @@
 		"simple-import-sort/imports": "error",
 		"simple-import-sort/exports": "error",
 		"unused-imports/no-unused-imports": "error"
-	}
+	},
+	"overrides": [
+		{
+			"files": [
+				"**/__tests__/**/*.[jt]s?(x)",
+				"**/?(*.)+(spec|test).[jt]s?(x)"
+			],
+			"extends": ["plugin:testing-library/react"]
+		}
+	]
 }

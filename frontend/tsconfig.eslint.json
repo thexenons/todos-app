@@ -1,0 +1,7 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"types": ["jest", "@testing-library/react"]
+	},
+	"include": ["src", "vite.config.ts", "src/**/*.spec.*"]
+}
