@@ -48,6 +48,10 @@ const useSelectInput = (
 	} = useBoolean();
 	const { value: isOpen, setFalse: close, setTrue: open } = useBoolean(false);
 
+	const [activeChoiceIndex, setActiveChoiceIndex] = useState<number>(
+		choices.findIndex((choice) => choice.value === field.value?.value) || 0
+	);
+
 	// Update inputValue when field.value changes.
 	useEffect(() => {
 		if (field.value) {
@@ -94,11 +98,21 @@ const useSelectInput = (
 	const onClose = useCallback(() => {
 		close();
 		setIsNotFiltering();
+		setActiveChoiceIndex(
+			choices.findIndex((choice) => choice.value === field.value?.value) || 0
+		);
 
 		if (inputValue !== field.value?.label) {
 			setInputValue(field.value?.label ?? "");
 		}
-	}, [close, field.value?.label, inputValue, setIsNotFiltering]);
+	}, [
+		choices,
+		close,
+		field.value?.label,
+		field.value?.value,
+		inputValue,
+		setIsNotFiltering,
+	]);
 
 	const popperRef = useRef<HTMLDivElement | null>(null);
 	useOnClickOutside(popperRef, onClose);
@@ -113,8 +127,6 @@ const useSelectInput = (
 	}, [choices, inputValue, isFiltering]);
 
 	// Manage active choice
-	const [activeChoiceIndex, setActiveChoiceIndex] = useState<number>(0);
-
 	useEffect(() => {
 		const onKeyPress = (e: KeyboardEvent) => {
 			const key = e.key;
@@ -148,8 +160,9 @@ const useSelectInput = (
 
 			if (key === "Enter" || key === "Escape") {
 				inputRef.current?.blur();
-				close();
-				setActiveChoiceIndex(0);
+
+				if (key === "Enter") close();
+				if (key === "Escape") onClose();
 			}
 		};
 
@@ -160,7 +173,14 @@ const useSelectInput = (
 		return () => {
 			window.removeEventListener("keydown", onKeyPress);
 		};
-	}, [activeChoiceIndex, close, filteredChoices, isOpen, selectOption]);
+	}, [
+		activeChoiceIndex,
+		close,
+		filteredChoices,
+		isOpen,
+		onClose,
+		selectOption,
+	]);
 
 	const handleOptionItemHover = useCallback(
 		(index: number) => () => {
