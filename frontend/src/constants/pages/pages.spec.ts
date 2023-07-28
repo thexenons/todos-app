@@ -1,5 +1,5 @@
-import { Page, PageKey } from "../../types";
-import { PAGES } from ".";
+import { Page } from "../../types";
+import { PageKey, PAGES } from ".";
 
 const testPage = async (page: Page) => {
 	if (page.loader) {

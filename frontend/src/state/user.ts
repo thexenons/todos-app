@@ -1,7 +1,8 @@
 import { atomWithStorage } from "jotai/utils";
 
+import { PageKey } from "../constants";
 import { getPagePath } from "../router/utils";
-import { PageKey, User } from "../types";
+import { User } from "../types";
 
 export const accessTokenAtom = atomWithStorage<string | null>(
 	"accessToken",

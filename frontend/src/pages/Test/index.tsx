@@ -4,8 +4,9 @@ import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import dataProvider from "../../api/dataProvider";
 import Container from "../../components/layout/Container";
 import ListTodosLists from "../../components/organisms/ListTodosLists";
+import { PageKey } from "../../constants";
 import { getPagePath } from "../../router/utils";
-import { PageKey, TodosList } from "../../types";
+import { TodosList } from "../../types";
 import type { TestParams } from "./types";
 
 const Test: FC = () => {

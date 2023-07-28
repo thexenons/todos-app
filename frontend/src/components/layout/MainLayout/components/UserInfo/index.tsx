@@ -1,8 +1,8 @@
 import type { FC } from "react";
 
+import { PageKey } from "../../../../../constants";
 import useUser from "../../../../../hooks/useUser";
 import { logout } from "../../../../../state/user";
-import { PageKey } from "../../../../../types";
 import Button from "../../../../atoms/Button";
 import Link from "../../../../atoms/Link";
 

@@ -3,9 +3,8 @@ import { useLocation } from "react-router-dom";
 
 import Link from "../../../components/atoms/Link";
 import Sidebar from "../../../components/layout/Sidebar";
-import { PAGES } from "../../../constants";
+import { PageKey, PAGES } from "../../../constants";
 import { getPageKey } from "../../../router/utils";
-import { PageKey } from "../../../types";
 import * as S from "./styled";
 
 const componentsPages = Object.entries(

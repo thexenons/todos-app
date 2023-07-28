@@ -1,6 +1,27 @@
 import { lazy } from "react";
 
-import { PageKey, Pages } from "../../types";
+import { Pages } from "../../types";
+
+export enum PageKey {
+	home = "home",
+	todosListSingle = "todosListSingle",
+	login = "login",
+	register = "register",
+
+	test = "test",
+	components = "components",
+	componentsButton = "componentsButton",
+	componentsAcceptButton = "componentsAcceptButton",
+	componentsUpdateButton = "componentsUpdateButton",
+	componentsCreateButton = "componentsCreateButton",
+	componentsDeleteButton = "componentsDeleteButton",
+	componentsCancelButton = "componentsCancelButton",
+	componentsPanel = "componentsPanel",
+	componentsModal = "componentsModal",
+	componentsFloatingPanel = "componentsFloatingPanel",
+	componentsInputBase = "componentsInputBase",
+	componentsInputs = "componentsInputs",
+}
 
 export const PAGES: Pages = {
 	[PageKey.home]: {

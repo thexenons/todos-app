@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Form from "../../components/forms/Form";
 import Input from "../../components/forms/inputs/Input";
 import Container from "../../components/layout/Container";
+import { PageKey } from "../../constants";
 import useDataProvider from "../../hooks/fetch/useDataProvider";
 import { getPagePath } from "../../router/utils";
 import { accessTokenAtom } from "../../state/user";
-import { PageKey } from "../../types";
 import { LoginFieldValues } from "./types";
 
 const Login: FC = () => {

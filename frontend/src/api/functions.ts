@@ -1,14 +1,7 @@
-import { API_BASE_URL } from "../constants";
+import { API_BASE_URL, PageKey } from "../constants";
 import { getPagePath } from "../router/utils";
 import { getAccessToken, logout } from "../state/user";
-import {
-	API_METHODS,
-	ENDPOINT,
-	Filters,
-	GetList,
-	Options,
-	PageKey,
-} from "../types";
+import { API_METHODS, ENDPOINT, Filters, GetList, Options } from "../types";
 import { getEndpointPath } from "./utils";
 
 export const parseFilters = (filters: Filters) => {

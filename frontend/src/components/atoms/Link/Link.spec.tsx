@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 
+import { PageKey } from "../../../constants";
 import BaseTestComponent from "../../../tests/BaseTestComponent";
-import { PageKey } from "../../../types";
 import Link from ".";
 
 describe("Link", () => {

@@ -1,5 +1,5 @@
-import { PAGES } from "../constants";
-import { Page, PageKey, Pages } from "../types";
+import { PageKey, PAGES } from "../constants";
+import { Page, Pages } from "../types";
 
 export function getPagePath(
 	targetPageKey: PageKey,
