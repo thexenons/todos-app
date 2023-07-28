@@ -198,6 +198,7 @@ const useSelectInput = (
 			...field,
 			ref: handleRef,
 			onFocus,
+			onBlur: onClose,
 			onChange,
 			value: inputValue,
 		} as InputBaseProps,

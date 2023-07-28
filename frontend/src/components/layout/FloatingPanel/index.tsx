@@ -117,7 +117,7 @@ const FloatingPanel = forwardRef<HTMLDivElement, FloatingPanelProps>(
 					onClick={handleClick}
 					onKeyDown={handleKeyDown}
 					role="button"
-					tabIndex={0}
+					tabIndex={-1}
 				>
 					{children}
 				</div>
