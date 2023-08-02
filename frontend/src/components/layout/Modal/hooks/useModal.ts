@@ -1,5 +1,11 @@
 import { useSetAtom } from "jotai";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+	useCallback,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+	useState,
+} from "react";
 import { useLockedBody } from "usehooks-ts";
 
 import { openedModalsAtom } from "../state";
@@ -15,8 +21,10 @@ function createWrapperAndAppendToBody(wrapperId: string) {
 
 const useModal = ({
 	isOpen,
+	onClose,
+	disabled,
 	wrapperId = "react-portal-wrapper",
-}: Pick<ModalProps, "wrapperId" | "isOpen">) => {
+}: Pick<ModalProps, "wrapperId" | "isOpen" | "onClose" | "disabled">) => {
 	const setOpenModals = useSetAtom(openedModalsAtom);
 	const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(
 		null
@@ -58,7 +66,13 @@ const useModal = ({
 		};
 	}, [isOpen, setLocked, setOpenModals]);
 
-	return { wrapperElement };
+	const onBackdropClick = useCallback(() => {
+		if (disabled) return;
+
+		onClose?.();
+	}, [disabled, onClose]);
+
+	return { wrapperElement, onBackdropClick };
 };
 
 export default useModal;

@@ -2,7 +2,10 @@ import { createContext, useContext } from "react";
 
 import { ModalProps } from "../types";
 
-type ModalContextProps = Pick<ModalProps, "isOpen" | "onCancel" | "onAccept"> &
+type ModalContextProps = Pick<
+	ModalProps,
+	"isOpen" | "onCancel" | "onAccept" | "disabled"
+> &
 	Partial<Pick<ModalProps, "onClose">>;
 
 const ModalContext = createContext<ModalContextProps>({

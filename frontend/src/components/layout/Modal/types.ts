@@ -10,4 +10,5 @@ export interface ModalProps extends PropsWithChildren {
 	wrapperId?: string;
 	maxWidth?: BREAKPOINT;
 	fullWidth?: boolean;
+	disabled?: boolean;
 }

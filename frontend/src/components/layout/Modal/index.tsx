@@ -18,16 +18,24 @@ const ModalView: FC<ModalProps> = ({
 	wrapperId = "react-portal-wrapper",
 	maxWidth,
 	fullWidth,
+	disabled = false,
 	children,
 	...rest
 }) => {
-	const { wrapperElement } = useModal({ wrapperId, isOpen });
+	const { wrapperElement, onBackdropClick } = useModal({
+		wrapperId,
+		isOpen,
+		onClose,
+		disabled,
+	});
 
 	if (wrapperElement === null || !isOpen) return null;
 
 	return createPortal(
-		<ModalContextProvider value={{ isOpen, onClose, onCancel, onAccept }}>
-			<S.ModalBackdrop aria-hidden="true" onClick={onClose} />
+		<ModalContextProvider
+			value={{ isOpen, onClose, onCancel, onAccept, disabled }}
+		>
+			<S.ModalBackdrop aria-hidden="true" onClick={onBackdropClick} />
 			<S.ModalWrapper $fullWidth={fullWidth} $maxWidth={maxWidth} {...rest}>
 				{children}
 			</S.ModalWrapper>
@@ -39,7 +47,7 @@ const ModalView: FC<ModalProps> = ({
 const ModalCloseButton: FC<Omit<ComponentProps<typeof Button>, "children">> = (
 	props
 ) => {
-	const { onClose } = useModalContext();
+	const { onClose, disabled = false } = useModalContext();
 
 	return (
 		<S.ModalCloseButton
@@ -47,6 +55,7 @@ const ModalCloseButton: FC<Omit<ComponentProps<typeof Button>, "children">> = (
 			colorVariant={Button.colorVariants.primary}
 			isRounded
 			onClick={onClose}
+			disabled={disabled}
 			{...props}
 		>
 			<Button.Icon>
@@ -57,24 +66,25 @@ const ModalCloseButton: FC<Omit<ComponentProps<typeof Button>, "children">> = (
 };
 
 const ModalCancelButton: typeof CancelButton = (props) => {
-	const { onClose, onCancel } = useModalContext();
+	const { onClose, onCancel, disabled = false } = useModalContext();
 
-	const onClick = useCallback(() => {
+	const onClick = useCallback(async () => {
+		await onCancel?.();
 		onClose?.();
-		onCancel?.();
 	}, [onCancel, onClose]);
 
-	return <CancelButton onClick={onClick} {...props} />;
+	return <CancelButton onClick={onClick} disabled={disabled} {...props} />;
 };
-const ModalAcceptButton: typeof AcceptButton = (props) => {
-	const { onClose, onAccept } = useModalContext();
 
-	const onClick = useCallback(() => {
+const ModalAcceptButton: typeof AcceptButton = (props) => {
+	const { onClose, onAccept, disabled } = useModalContext();
+
+	const onClick = useCallback(async () => {
+		await onAccept?.();
 		onClose?.();
-		onAccept?.();
 	}, [onAccept, onClose]);
 
-	return <AcceptButton onClick={onClick} {...props} />;
+	return <AcceptButton onClick={onClick} disabled={disabled} {...props} />;
 };
 
 const Modal = ModalView as typeof ModalView & {
